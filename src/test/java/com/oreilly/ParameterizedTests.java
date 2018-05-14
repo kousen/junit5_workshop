@@ -26,13 +26,13 @@ public class ParameterizedTests {
 
     @ParameterizedTest(name = "{0} is prime")
     @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19})
-    void primes(int argument) {
+    void valueIsPrime(int argument) {
         assertTrue(ParameterizedTests.isPrime(argument));
     }
 
     @ParameterizedTest(name = "{0} is composite")
     @ValueSource(ints = {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20})
-    void composites(int argument) {
+    void valueIsComposite(int argument) {
         assertFalse(ParameterizedTests.isPrime(argument));
     }
 
@@ -91,6 +91,7 @@ public class ParameterizedTests {
     @CsvFileSource(resources = "/book_data.csv", numLinesToSkip = 1)
     void testBookSource(String isbn, String title, String author, LocalDate date) {
         assertEquals(10, isbn.length());
+        assertTrue(ISBNValidator.getInstance().isValidISBN10(isbn));
         assertNotNull(title);
         assertNotNull(author);
 

@@ -28,7 +28,7 @@ public class DynamicTests {
         return IntStream.iterate(0, n -> n + 2)
                 .limit(10)
                 .mapToObj(n -> dynamicTest(
-                        n + " is even", () -> assertEquals(0, n % 2)));
+                        n + " is even", () -> assertTrue(n % 2 == 0)));
     }
 
     @TestFactory
