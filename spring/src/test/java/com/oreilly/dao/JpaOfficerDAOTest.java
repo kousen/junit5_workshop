@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"SqlNoDataSourceInspection", "SqlResolve"})
 @ExtendWith(SpringExtension.class)
+// @RunWith(SpringRunner.class) in JUnit 4
 @SpringBootTest
 @Transactional
 public class JpaOfficerDAOTest {

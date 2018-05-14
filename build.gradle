@@ -3,6 +3,7 @@ version '1.0'
 
 allprojects {
     apply plugin: 'java-library'
+    apply plugin: 'eclipse'
 
     sourceCompatibility = 1.8
 

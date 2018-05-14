@@ -33,7 +33,9 @@ public class StringTests {
 
     @Test
     void demoStringHasNotChanged() {
-        assertEquals("this is my demo string", demo);
+        // deferred creation of error string, using Supplier<String>
+        assertEquals("this is my demo string", demo,
+                     () -> "string should not have changed");
     }
 
     @Test  // Dirties state (context)

@@ -14,7 +14,7 @@ public class AssertionsDemo {
     void assertAllBook() {
         Book book = new Book("149197317X", "Modern Java Recipes", "Ken Kousen", LocalDate.parse("2017-08-26"));
         assertAll("MJR",
-                  () -> ISBNValidator.getInstance().isValidISBN10(book.getIsbn()),
+                  () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
                   () -> assertEquals("Modern Java Recipes", book.getTitle()),
                   () -> assertEquals("Ken Kousen", book.getAuthor()));
     }
@@ -35,14 +35,17 @@ public class AssertionsDemo {
                   });
     }
 
+    private static void throwException() throws Exception {
+        String[] strings = "".split(" ");
+        if (strings.length != 2)
+            throw new Exception("Parsing problem");
+    }
+
     @Test
+    // In JUnit 4, this would be @Test(expected=Exception.class)
     void exceptionTesting() {
         Exception ex = assertThrows(Exception.class,
-                                    () -> {
-                                        String[] strings = "".split(" ");
-                                        if (strings.length != 2)
-                                            throw new Exception("Parsing problem");
-                                    });
+                                    AssertionsDemo::throwException);
         assertEquals("Parsing problem", ex.getMessage());
     }
 
