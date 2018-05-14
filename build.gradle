@@ -1,0 +1,30 @@
+group 'com.kousenit'
+version '1.0'
+
+allprojects {
+    apply plugin: 'java-library'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        jcenter()
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    }
+}
+
+dependencies {
+    // Contains URL and ISBN validators
+    implementation 'commons-validator:commons-validator:1.6'
+
+    // Needed for parameterized tests
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.2.0'
+}
+
