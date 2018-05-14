@@ -14,7 +14,6 @@ public class LifeCycleTest {
         System.out.println("BeforeEach");
     }
 
-
     @Test
     void test1(TestInfo info, TestReporter reporter) {
         reporter.publishEntry("test1", info.getDisplayName());
