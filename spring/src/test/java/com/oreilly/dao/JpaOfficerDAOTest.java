@@ -4,6 +4,8 @@ import com.oreilly.entities.Officer;
 import com.oreilly.entities.Rank;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnJre;
+import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 // @RunWith(SpringRunner.class) in JUnit 4
 @SpringBootTest
 @Transactional
+@EnabledOnJre(JRE.JAVA_8)
 public class JpaOfficerDAOTest {
     @Autowired
     private OfficerDAO dao;
