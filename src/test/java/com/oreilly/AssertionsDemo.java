@@ -11,6 +11,38 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AssertionsDemo {
     @Test
+    void testWithoutSupplier() {
+        assertEquals("this is a string",  // expected
+                     getCompleteString(), // test method
+                     getErrorMessage());  // error message method called even if no error
+    }
+
+    @Test
+    void testWithSupplier() {
+        assertEquals("this is a string",  // expected
+                     getCompleteString(), // test method
+                     () -> "This should never happen");  // error message supplier
+    }
+
+    @Test
+    void testWithSupplierMethod() {
+        assertEquals("this is a string",  // expected
+                     getCompleteString(), // test method
+                     () -> getErrorMessage());  // error message supplier NOT CALLED if no error
+    }
+
+    private String getCompleteString() {
+        System.out.println("Inside the getCompleteString method");
+        return "this" + " " + "is" +
+                " " + "a" + " " + "string";
+    }
+
+    private String getErrorMessage() {
+        System.out.println("Inside getErrorMessage");
+        return "This should never happen";
+    }
+
+    @Test
     void assertAllBook() {
         Book book = new Book("149197317X", "Modern Java Recipes", "Ken Kousen", LocalDate.parse("2017-08-26"));
         assertAll("MJR",
@@ -35,7 +67,7 @@ public class AssertionsDemo {
                   });
     }
 
-    private static void throwException() throws Exception {
+    private void throwException() throws Exception {
         String[] strings = "".split(" ");
         if (strings.length != 2)
             throw new Exception("Parsing problem");
@@ -45,7 +77,7 @@ public class AssertionsDemo {
     // In JUnit 4, this would be @Test(expected=Exception.class)
     void exceptionTesting() {
         Exception ex = assertThrows(Exception.class,
-                                    AssertionsDemo::throwException);
+                                    this::throwException);
         assertEquals("Parsing problem", ex.getMessage());
     }
 
