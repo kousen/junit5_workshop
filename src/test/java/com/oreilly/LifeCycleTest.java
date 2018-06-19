@@ -4,6 +4,10 @@ import org.junit.jupiter.api.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 public class LifeCycleTest {
+    public LifeCycleTest() {
+        System.out.println("Constructor");
+    }
+
     @BeforeAll
     static void init() {
         System.out.println("BeforeAll");
@@ -15,13 +19,13 @@ public class LifeCycleTest {
     }
 
     @Test
-    void test1(TestInfo info, TestReporter reporter) {
+    protected void test1(TestInfo info, TestReporter reporter) {
         reporter.publishEntry("test1", info.getDisplayName());
         System.out.println("test1");
     }
 
     @Test
-    void test2() {
+    public void test2() {
         System.out.println("test2");
     }
 
