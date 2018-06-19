@@ -2,16 +2,12 @@ package com.oreilly;
 
 import org.apache.commons.validator.routines.ISBNValidator;
 import org.apache.commons.validator.routines.UrlValidator;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.AggregateWith;
 import org.junit.jupiter.params.provider.*;
 
-import java.net.URL;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.Period;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
