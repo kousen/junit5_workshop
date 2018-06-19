@@ -2,10 +2,7 @@ package com.oreilly;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.condition.EnabledOnJre;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.JRE;
-import org.junit.jupiter.api.condition.OS;
+import org.junit.jupiter.api.condition.*;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,6 +31,12 @@ public class ConditionalTests {
     @EnabledOnJre({JRE.JAVA_10, JRE.JAVA_11})
     void okayOnJava10and11() {
         assertTrue(true);
+    }
+
+    @Test // Static JavaScript expression.
+    @EnabledIf("2 * 3 == 6")
+    void willBeExecuted() {
+        System.out.println("Experimental feature taken from sec 3.7.5 in User Manual");
     }
 
 
