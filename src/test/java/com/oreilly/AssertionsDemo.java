@@ -6,10 +6,20 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AssertionsDemo {
+    @Test
+    void standardAssertions() {
+        assertEquals(2, 2);
+        assertEquals(4, 4, "The optional assertion message is now the last parameter.");
+        assertTrue('a' < 'b', () -> "Assertion messages can be lazily evaluated -- "
+                + "to avoid constructing complex messages unnecessarily.");
+    }
+
     @Test
     void testWithoutSupplier() {
         assertEquals("this is a string",  // expected
@@ -79,6 +89,14 @@ public class AssertionsDemo {
         Exception ex = assertThrows(Exception.class,
                                     this::throwException);
         assertEquals("Parsing problem", ex.getMessage());
+    }
+
+    @Test
+    void exceptionWithoutMethodReference() {
+        List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class,
+                                                                                     () -> strings.get(99));
+        assertEquals("99", ex.getMessage());
     }
 
     @Test

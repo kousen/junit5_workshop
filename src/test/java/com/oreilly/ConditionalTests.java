@@ -1,8 +1,11 @@
 package com.oreilly;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.condition.*;
+
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -39,5 +42,26 @@ public class ConditionalTests {
         System.out.println("Experimental feature taken from sec 3.7.5 in User Manual");
     }
 
+    @RepeatedTest(10) // Dynamic JavaScript expression.
+    @DisabledIf("Math.random() < 0.314159")
+    void mightNotBeExecuted() {
+        System.out.println("executed");
+    }
 
+    @Test // Multi-line script, custom engine name and custom reason.
+    @EnabledIf(value = {
+            "load('nashorn:mozilla_compat.js')",
+            "importPackage(java.time)",
+            "",
+            "var today = LocalDate.now()",
+            "var tomorrow = today.plusDays(1)",
+            "tomorrow.isAfter(today)"
+    },
+            engine = "nashorn",
+            reason = "Self-fulfilling: {result}")
+    void theDayAfterTomorrow() {
+        LocalDate today = LocalDate.now();
+        LocalDate tomorrow = today.plusDays(1);
+        assertTrue(tomorrow.isAfter(today));
+    }
 }
