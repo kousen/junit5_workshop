@@ -38,15 +38,15 @@ public class ParameterizedTests {
                          .noneMatch(i -> value % i == 0);
     }
 
-    private static IntStream primesLessThan100() {
-        return IntStream.rangeClosed(2, 100)
-                .filter(ParameterizedTests::isPrime);
-    }
-
     @ParameterizedTest(name = "{0} is prime")
     @MethodSource("primesLessThan100")
     void checkPrimesLessThan100(int arg) {
         assertTrue(ParameterizedTests.isPrime(arg));
+    }
+
+    private static IntStream primesLessThan100() {
+        return IntStream.rangeClosed(2, 100)
+                .filter(ParameterizedTests::isPrime);
     }
 
     @ParameterizedTest

@@ -4,6 +4,7 @@ import com.oreilly.entities.Officer;
 import com.oreilly.entities.Rank;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.condition.EnabledOnJre;
 import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 @EnabledOnJre(JRE.JAVA_8)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JpaOfficerDAOTest {
     @Autowired
     private OfficerDAO dao;
