@@ -15,7 +15,7 @@ public class AssertionsDemo {
     @Test
     void standardAssertions() {
         assertEquals(2, 2);
-        assertEquals(4, 4, "The optional assertion message is now the last parameter.");
+        assertEquals(4, 2 + 2, "The optional assertion message is now the last parameter.");
         assertTrue('a' < 'b', () -> "Assertion messages can be lazily evaluated -- "
                 + "to avoid constructing complex messages unnecessarily.");
     }
@@ -65,28 +65,33 @@ public class AssertionsDemo {
     void assertAllBookWithDependents() {
         Book book = new Book("149197317X", "Modern Java Recipes", "Ken Kousen", LocalDate.parse("2017-08-26"));
         assertAll("MJR",
+                  // ISBN and author name tests always run
+                  // Null check on title always runs
                   () -> ISBNValidator.getInstance().isValidISBN10(book.getIsbn()),
-                  () -> assertNotNull(book.getTitle()),
                   () -> {
+                      assertNotNull(book.getTitle());
+
+                      // The rest of the block skipped if null title
                       String[] name = book.getTitle().split(" ");
                       assertEquals(3, name.length);
                       assertAll("title words",
                                 () -> assertTrue(name[0].startsWith("M")),
                                 () -> assertTrue(name[1].startsWith("J")),
                                 () -> assertTrue(name[2].startsWith("R")));
-                  });
+                  },
+                  () -> assertEquals("Ken Kousen", book.getAuthor()));
     }
 
-    private void throwException() throws Exception {
+    private void throwException() {
         String[] strings = "".split(" ");
         if (strings.length != 2)
-            throw new Exception("Parsing problem");
+            throw new IllegalArgumentException("Parsing problem");
     }
 
     @Test
-    // In JUnit 4, this would be @Test(expected=Exception.class)
+        // In JUnit 4, this would be @Test(expected=IllegalArgumentException.class)
     void exceptionTesting() {
-        Exception ex = assertThrows(Exception.class,
+        Exception ex = assertThrows(IllegalArgumentException.class,
                                     this::throwException);
         assertEquals("Parsing problem", ex.getMessage());
     }
@@ -95,7 +100,7 @@ public class AssertionsDemo {
     void exceptionWithoutMethodReference() {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
         ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class,
-                                                                                     () -> strings.get(99));
+                                                         () -> strings.get(99));
         assertEquals("99", ex.getMessage());
     }
 
