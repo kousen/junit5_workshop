@@ -16,8 +16,8 @@ allprojects {
     }
 
     dependencies {
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 
         testImplementation 'org.junit.platform:junit-platform-launcher:1.2.0'
     }
@@ -32,6 +32,6 @@ dependencies {
     implementation 'commons-validator:commons-validator:1.6'
         
     // Needed for parameterized tests
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.2.0'  
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.3.1'
 }
 
