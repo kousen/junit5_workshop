@@ -5,7 +5,7 @@ allprojects {
     apply plugin: 'java-library'
     apply plugin: 'eclipse'
 
-    sourceCompatibility = 1.8
+    sourceCompatibility = 11
 
     repositories {
         jcenter()
@@ -19,7 +19,7 @@ allprojects {
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 
-        testImplementation 'org.junit.platform:junit-platform-launcher:1.2.0'
+        testImplementation 'org.hamcrest:hamcrest-library:1.3'
     }
 }
 

@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AssertionsDemo {
@@ -101,7 +103,7 @@ public class AssertionsDemo {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
         ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class,
                                                          () -> strings.get(99));
-        assertEquals("99", ex.getMessage());
+        assertThat(ex.getMessage(), containsString("99"));
     }
 
     @Test
