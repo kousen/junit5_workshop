@@ -20,13 +20,13 @@ public class ParameterizedTests {
     private List<Month> months = Stream.of(Month.values())
                                        .collect(Collectors.toList());
 
-    @ParameterizedTest(name = "{0} is prime")
+    @ParameterizedTest(name = "{0} is prime and less than 20")
     @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19})
     void valueIsPrime(int argument) {
         assertTrue(ParameterizedTests.isPrime(argument));
     }
 
-    @ParameterizedTest(name = "{0} is composite")
+    @ParameterizedTest(name = "{0} is composite and less than or equal to 20")
     @ValueSource(ints = {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20})
     void valueIsComposite(int argument) {
         assertFalse(ParameterizedTests.isPrime(argument));
