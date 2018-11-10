@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
 // @RunWith(SpringRunner.class) in JUnit 4
 @SpringBootTest
 @Transactional
-@EnabledOnJre(JRE.JAVA_8)
+@EnabledOnJre({JRE.JAVA_8, JRE.JAVA_11})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JpaOfficerDAOTest {
     @Autowired

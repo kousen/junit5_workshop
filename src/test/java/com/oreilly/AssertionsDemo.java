@@ -94,7 +94,7 @@ public class AssertionsDemo {
         // In JUnit 4, this would be @Test(expected=IllegalArgumentException.class)
     void exceptionTesting() {
         Exception ex = assertThrows(IllegalArgumentException.class,
-                                    this::throwException);
+                this::throwException);
         assertEquals("Parsing problem", ex.getMessage());
     }
 
