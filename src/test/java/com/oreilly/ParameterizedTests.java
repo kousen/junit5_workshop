@@ -44,6 +44,13 @@ public class ParameterizedTests {
         assertTrue(ParameterizedTests.isPrime(arg));
     }
 
+    @ParameterizedTest(name = "{0} is not blank")
+    @ValueSource(strings = {"this", "is", "a", "list", "of", "strings"})
+    void noneAreBlank(String argument) {
+        System.out.println("Testing " + argument + " is not blank");
+        assertTrue(!argument.isBlank());
+    }
+
     private static IntStream primesLessThan100() {
         return IntStream.rangeClosed(2, 100)
                 .filter(ParameterizedTests::isPrime);
