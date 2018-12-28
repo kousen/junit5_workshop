@@ -16,13 +16,12 @@ public class JUnit4ListTests {
 
     @BeforeClass
     public static void runBefore() {
-        System.out.println("Inside BeforeClass");
-        System.out.println(strings);
+        System.out.println("BeforeClass: " + strings);
     }
 
     @Before
     public void setUp() {
-        System.out.println("Inside Before");
+        System.out.println("Before: " + modifiable);
         modifiable.add(3);
         modifiable.add(1);
         modifiable.add(4);
@@ -32,7 +31,7 @@ public class JUnit4ListTests {
 
     @After
     public void finish() {
-        System.out.println("Inside After");
+        System.out.println("After: " + modifiable);
     }
 
     @Test
@@ -51,6 +50,7 @@ public class JUnit4ListTests {
         assertEquals(5, modifiable.size());
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void accessBeyondEndThrowsException() {
         System.out.println("Testing out of bounds exception");
@@ -60,6 +60,6 @@ public class JUnit4ListTests {
 
     @AfterClass
     public static void runAfter() {
-        System.out.println("Inside AfterClass");
+        System.out.println("AfterClass: " + strings);
     }
 }
