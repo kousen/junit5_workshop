@@ -14,10 +14,11 @@ public class AssumptionsDemo {
     void onlyRunIfStackIsNotEmpty() {
         int size = stack.size();
 
-        // Make sure stack is not empty
+        // Pre-condition: Stack is not empty
         assumeTrue(size > 0, "Stack must not be empty");
 
         stack.pop();
+        // Post-condition: Should be one less item than before
         assertEquals(size - 1, stack.size());
     }
 }
