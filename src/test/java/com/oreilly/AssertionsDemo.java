@@ -112,13 +112,13 @@ public class AssertionsDemo {
     }
 
     @Test
-    @Disabled("Disable until demo")
+    //@Disabled("Disable until demo")
     void timeoutExceeded() {
         assertTimeout(Duration.ofMillis(100), () -> Thread.sleep(200));
     }
 
     @Test
-    @Disabled("Disable until demo")
+    //@Disabled("Disable until demo")
     void timeoutExceededWithPreemption() {
         assertTimeoutPreemptively(Duration.ofMillis(100), () -> Thread.sleep(200));
     }
