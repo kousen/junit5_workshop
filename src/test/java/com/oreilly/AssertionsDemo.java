@@ -101,7 +101,8 @@ public class AssertionsDemo {
     @Test
     void exceptionWithoutMethodReference() {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
-        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class,
+        ArrayIndexOutOfBoundsException ex =
+                assertThrows(ArrayIndexOutOfBoundsException.class,
                                                          () -> strings.get(99));
         assertThat(ex.getMessage(), containsString("99"));
     }

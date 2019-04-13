@@ -7,7 +7,7 @@ allprojects {
 
     // sourceCompatibility = 11
 
-    ext.junitVersion = '5.4.0'
+    ext.junitVersion = '5.4.1'
 
     repositories {
         jcenter()
