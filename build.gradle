@@ -14,7 +14,9 @@ allprojects {
     }
 
     test {
-        useJUnitPlatform()
+        useJUnitPlatform {
+            excludeTags 'slow'
+        }
     }
 
     dependencies {
