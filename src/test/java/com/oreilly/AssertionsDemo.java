@@ -56,7 +56,8 @@ public class AssertionsDemo {
 
     @Test
     void assertAllBook() {
-        Book book = new Book("149197317X", "Modern Java Recipes", "Ken Kousen", LocalDate.parse("2017-08-26"));
+        Book book = new Book("149197317X", "Modern Java Recipes",
+                "Ken Kousen", LocalDate.parse("2017-08-26"));
         assertAll("MJR",
                   () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
                   () -> assertEquals("Modern Java Recipes", book.getTitle()),
@@ -65,7 +66,8 @@ public class AssertionsDemo {
 
     @Test
     void assertAllBookWithDependents() {
-        Book book = new Book("149197317X", "Modern Java Recipes", "Ken Kousen", LocalDate.parse("2017-08-26"));
+        Book book = new Book("149197317X", "Modern Java Recipes",
+                "Ken Kousen", LocalDate.parse("2017-08-26"));
         assertAll("MJR",
                   // ISBN and author name tests always run
                   // Null check on title always runs
