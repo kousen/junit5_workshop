@@ -33,6 +33,12 @@ public class ParameterizedTests {
                 .filter(ParameterizedTests::isPrime);
     }
 
+    @ParameterizedTest(name = "max of {0} and {1} is {2}")
+    @MethodSource("maxWithArgsList")
+    void testMax(int x, int y, int max) {
+        assertTrue(max >= x && max >= y);
+    }
+
     private static List<Arguments> maxWithArgsList() {
         return Arrays.asList(Arguments.of(2, 1, 2),
                 Arguments.of(7, 3, 7),
@@ -88,12 +94,6 @@ public class ParameterizedTests {
     void monthsEnum(Month month) {
         assertNotNull(month);
         assertTrue(months.contains(month));
-    }
-
-    @ParameterizedTest(name = "max of {0} and {1} is {2}")
-    @MethodSource("maxWithArgsList")
-    void testMax(int x, int y, int max) {
-        assertTrue(max >= x && max >= y);
     }
 
     @ParameterizedTest

@@ -36,6 +36,12 @@ public class ConditionalTests {
         assertTrue(true);
     }
 
+    @Test
+    @EnabledIfSystemProperty(named = "ci-server", matches = "true")
+    void onCiServer() {
+        // ...
+    }
+
     @Test // Static JavaScript expression.
     @EnabledIf("2 * 3 == 6")
     void willBeExecuted() {
