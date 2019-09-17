@@ -102,11 +102,11 @@ public class AssertionsDemo {
     }
 
     @Test
+    // Junit 4: @Test(expected = IndexOutOfBoundsException.class)
     void exceptionWithoutMethodReference() {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
-        ArrayIndexOutOfBoundsException ex =
-                assertThrows(ArrayIndexOutOfBoundsException.class,
-                                                         () -> strings.get(99));
+        IndexOutOfBoundsException ex =
+                assertThrows(IndexOutOfBoundsException.class, () -> strings.get(99));
         assertThat(ex.getMessage(), containsString("99"));
     }
 
