@@ -44,6 +44,13 @@ public class AssertionsDemo {
                      () -> getErrorMessage());  // error message supplier NOT CALLED if no error
     }
 
+    @Test
+    void testWithSupplierMethodReference() {
+        assertEquals("this is a string",  // expected
+                getCompleteString(), // test method
+                this::getErrorMessage);  // error message supplier NOT CALLED if no error
+    }
+
     private String getCompleteString() {
         System.out.println("Inside the getCompleteString method");
         return "this" + " " + "is" +
