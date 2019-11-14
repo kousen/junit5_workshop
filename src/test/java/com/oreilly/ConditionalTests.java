@@ -34,8 +34,14 @@ public class ConditionalTests {
     }
 
     @Test
-    @EnabledIfSystemProperty(named = "ci-server", matches = "true")
+    @EnabledIfSystemProperty(named = "ciserver", matches = "true")
     void onCiServer() {
+        // ...
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "ENV", matches = "staging-server")
+    void onlyOnStagingServer() {
         // ...
     }
 }
