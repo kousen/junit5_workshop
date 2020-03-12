@@ -34,6 +34,11 @@ public class ConditionalTests {
     }
 
     @Test
+    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_11)
+    void okayForJREFrom8to11() {
+    }
+
+    @Test
     @EnabledIfSystemProperty(named = "ciserver", matches = "true")
     void onCiServer() {
         // ...

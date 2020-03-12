@@ -6,6 +6,7 @@ import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 public class AssumptionsDemo {
     private Stack<String> stack = new Stack<>();
@@ -36,5 +37,10 @@ public class AssumptionsDemo {
 
         // Post-condition: Should be one less item than before
         assertEquals(size - 1, stack.size());
+    }
+
+    @Test
+    void assumingThatWithPop() {
+        assumingThat(stack.size() > 0, () -> stack.pop());
     }
 }
