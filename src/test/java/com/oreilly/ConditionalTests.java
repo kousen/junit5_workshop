@@ -34,8 +34,19 @@ public class ConditionalTests {
     }
 
     @Test
-    @EnabledIfSystemProperty(named = "ci-server", matches = "true")
+    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_11)
+    void okayForJREFrom8to11() {
+    }
+
+    @Test
+    @EnabledIfSystemProperty(named = "ciserver", matches = "true")
     void onCiServer() {
+        // ...
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "ENV", matches = "staging-server")
+    void onlyOnStagingServer() {
         // ...
     }
 }

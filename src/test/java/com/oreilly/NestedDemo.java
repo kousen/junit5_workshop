@@ -66,15 +66,19 @@ public class NestedDemo {
             @Test
             @DisplayName("returns the element when popped and is empty")
             void returnElementWhenPopped() {
-                assertEquals(anElement, stack.pop());
-                assertTrue(stack.isEmpty());
+                assertAll(
+                        () -> assertEquals(anElement, stack.pop()),
+                        () -> assertTrue(stack.isEmpty())
+                );
             }
 
             @Test
             @DisplayName("returns the element when peeked but remains not empty")
             void returnElementWhenPeeked() {
-                assertEquals(anElement, stack.peek());
-                assertFalse(stack.isEmpty());
+                assertAll(
+                        () -> assertEquals(anElement, stack.peek()),
+                        () -> assertFalse(stack.isEmpty())
+                );
             }
         }
     }

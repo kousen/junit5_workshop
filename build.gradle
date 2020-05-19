@@ -32,5 +32,6 @@ test {
 dependencies {
     // Contains URL and ISBN validators
     implementation 'commons-validator:commons-validator:1.6'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.3.0'
 }
 

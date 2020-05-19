@@ -2,24 +2,45 @@ package com.oreilly;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
 import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 public class AssumptionsDemo {
     private Stack<String> stack = new Stack<>();
 
     @Test
-    void onlyRunIfStackIsNotEmpty() {
+    void stackIsEmpty() {
         int size = stack.size();
 
-        // Pre-condition: Stack is not empty
+        // Pre-condition violation: Only continue if stack is not empty
         assumeTrue(size > 0, "Stack must not be empty");
 
         stack.pop();
+
         // Post-condition: Should be one less item than before
         assertEquals(size - 1, stack.size());
+    }
+
+    @Test
+    void stackIsNotEmpty() {
+        stack.push("element");
+
+        int size = stack.size();
+
+        // Pre-condition satisfied: Only continue if stack is not empty
+        assumeTrue(size > 0, "Stack must not be empty");
+
+        stack.pop();
+
+        // Post-condition: Should be one less item than before
+        assertEquals(size - 1, stack.size());
+    }
+
+    @Test
+    void assumingThatWithPop() {
+        assumingThat(stack.size() > 0, () -> stack.pop());
     }
 }

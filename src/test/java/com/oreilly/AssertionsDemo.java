@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored"})
+@SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored", "Convert2MethodRef"})
 public class AssertionsDemo {
     @Test
     void standardAssertions() {
@@ -42,6 +42,13 @@ public class AssertionsDemo {
         assertEquals("this is a string",  // expected
                      getCompleteString(), // test method
                      () -> getErrorMessage());  // error message supplier NOT CALLED if no error
+    }
+
+    @Test
+    void testWithSupplierMethodReference() {
+        assertEquals("this is a string",  // expected
+                getCompleteString(), // test method
+                this::getErrorMessage);  // error message supplier NOT CALLED if no error
     }
 
     private String getCompleteString() {
