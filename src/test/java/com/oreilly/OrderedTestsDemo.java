@@ -17,17 +17,18 @@ public class OrderedTestsDemo {
     }
 
     @Test
+    @Order(3)
+    void validValues() {
+        // perform assertions against valid values
+        System.out.println("Ran validValues test");
+    }
+
+    @Test
     @Order(2)
     void emptyValues() {
         // perform assertions against empty values
         System.out.println("Ran emptyValues test");
     }
 
-    @Test
-    @Order(3)
-    void validValues() {
-        // perform assertions against valid values
-        System.out.println("Ran validValues test");
-    }
 
 }

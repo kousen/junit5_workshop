@@ -28,6 +28,9 @@ public class ParameterizedTests {
     }
 
     // Factory method for the @MethodSource
+    //  no arguments
+    //  static method (factory method)
+    //  returns Stream, Array, Iterable
     private static IntStream primesLessThan100() {
         return IntStream.rangeClosed(2, 100)
                 .filter(ParameterizedTests::isPrime);
@@ -105,8 +108,10 @@ public class ParameterizedTests {
             "Understanding Java 8 Generics, https://www.safaribooksonline.com/library/view/understanding-java-8/9781491978153/"
     })
     void courseList(String title, String url) {
-        assertNotNull(title);
-        assertTrue(UrlValidator.getInstance().isValid(url));
+        assertAll(
+                () -> assertNotNull(title),
+                () -> assertTrue(UrlValidator.getInstance().isValid(url))
+        );
     }
 
     // Method source with Book instances

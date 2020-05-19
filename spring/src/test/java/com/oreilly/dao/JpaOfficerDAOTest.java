@@ -24,7 +24,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"SqlNoDataSourceInspection", "SqlResolve"})
-@ExtendWith(SpringExtension.class)
+// @ExtendWith(SpringExtension.class) now part of @SpringBootTest
 // @RunWith(SpringRunner.class) in JUnit 4
 @SpringBootTest
 @Transactional
