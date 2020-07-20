@@ -3,12 +3,16 @@ package com.oreilly.mockito;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class PublisherTest {
+
+    @Mock
+    private Subscriber sub3;
 
     private final Publisher publisher = new Publisher();
     private final Subscriber sub1 = mock(Subscriber.class);
@@ -18,6 +22,7 @@ class PublisherTest {
     public void init() {
         publisher.subscribe(sub1);
         publisher.subscribe(sub2);
+        publisher.subscribe(sub3);
     }
 
     @Test
@@ -26,6 +31,7 @@ class PublisherTest {
 
         verify(sub1).onNext("Hello");
         verify(sub2).onNext("Hello");
+        verify(sub3).onNext("Hello");
     }
 
     @Test
@@ -37,6 +43,8 @@ class PublisherTest {
 
         // sub2 still receives the messages
         verify(sub2, times(2))
+                .onNext(argThat(s -> s.matches("message \\d")));
+        verify(sub3, times(2))
                 .onNext(argThat(s -> s.matches("message \\d")));
     }
 }

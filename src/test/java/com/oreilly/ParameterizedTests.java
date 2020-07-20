@@ -18,23 +18,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("Duplicates")
 public class ParameterizedTests {
-    private List<Month> months = Stream.of(Month.values())
+    private final List<Month> months = Stream.of(Month.values())
             .collect(Collectors.toList());
 
-    private static boolean isPrime(int value) {
-        return value == 2 ||
-                IntStream.rangeClosed(2, (int) (Math.sqrt(value) + 1))
-                        .noneMatch(i -> value % i == 0);
-    }
-
-    // Factory method for the @MethodSource
-    //  no arguments
-    //  static method (factory method)
-    //  returns Stream, Array, Iterable
-    private static IntStream primesLessThan100() {
-        return IntStream.rangeClosed(2, 100)
-                .filter(ParameterizedTests::isPrime);
-    }
 
     @ParameterizedTest(name = "max of {0} and {1} is {2}")
     @MethodSource("maxWithArgsList")
@@ -69,20 +55,30 @@ public class ParameterizedTests {
     @ParameterizedTest(name = "{0} is prime and less than 20")
     @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19})
     void valueIsPrime(int arg) {
-        assertTrue(ParameterizedTests.isPrime(arg));
+        assertTrue(UtilityMethods.isPrime(arg));
     }
 
     @ParameterizedTest(name = "{0} is composite and less than or equal to 20")
     @ValueSource(ints = {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20})
     void valueIsComposite(int argument) {
-        assertFalse(ParameterizedTests.isPrime(argument));
+        assertFalse(UtilityMethods.isPrime(argument));
     }
 
     @ParameterizedTest(name = "{0} is prime")
     @MethodSource("primesLessThan100")
     void checkPrimesLessThan100(int arg) {
-        assertTrue(ParameterizedTests.isPrime(arg));
+        assertTrue(UtilityMethods.isPrime(arg));
     }
+
+    // Factory method for the @MethodSource
+    //  no arguments
+    //  static method (factory method)
+    //  returns Stream, Array, Iterable
+    private static IntStream primesLessThan100() {
+        return IntStream.rangeClosed(2, 100)
+                .filter(UtilityMethods::isPrime);
+    }
+
 
     @ParameterizedTest(name = "{0} is not blank")
     @ValueSource(strings = {"this", "is", "a", "list", "of", "strings"})

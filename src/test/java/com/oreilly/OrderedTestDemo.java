@@ -9,19 +9,19 @@ import org.junit.jupiter.api.TestMethodOrder;
 class OrderedTestDemo {
 
     @Test
-    @Order(1)
+    @Order(30)
     void nullValues() {
         // perform assertions against null values
     }
 
     @Test
-    @Order(2)
+    @Order(32)
     void emptyValues() {
         // perform assertions against empty values
     }
 
     @Test
-    @Order(3)
+    @Order(12)
     void validValues() {
         // perform assertions against valid values
     }
