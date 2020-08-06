@@ -91,8 +91,10 @@ public class ParameterizedTests {
     @ParameterizedTest
     @EnumSource(Month.class)
     void monthsEnum(Month month) {
-        assertNotNull(month);
-        assertTrue(months.contains(month));
+        assertAll(
+                () -> assertNotNull(month),
+                () -> assertTrue(months.contains(month))
+        );
     }
 
     @ParameterizedTest
