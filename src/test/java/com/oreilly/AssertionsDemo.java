@@ -26,22 +26,22 @@ public class AssertionsDemo {
     @Test
     void testWithoutSupplier() {
         assertEquals("this is a string",  // expected
-                     getCompleteString(), // test method
-                     getErrorMessage());  // error message method called even if no error
+                getCompleteString(), // test method
+                getErrorMessage());  // error message method called even if no error
     }
 
     @Test
     void testWithSupplier() {
         assertEquals("this is a string",  // expected
-                     getCompleteString(), // test method
-                     () -> "This should never happen");  // error message supplier
+                getCompleteString(), // test method
+                () -> "This should never happen");  // error message supplier
     }
 
     @Test
     void testWithSupplierMethod() {
         assertEquals("this is a string",  // expected
-                     getCompleteString(), // test method
-                     () -> getErrorMessage());  // error message supplier NOT CALLED if no error
+                getCompleteString(), // test method
+                () -> getErrorMessage());  // error message supplier NOT CALLED if no error
     }
 
     @Test
@@ -64,12 +64,14 @@ public class AssertionsDemo {
 
     @Test
     void assertAllBook() {
+        // Imagine this was service.findByIsbn("149197317X") to return Book
         Book book = new Book("149197317X", "Modern Java Recipes",
                 "Ken Kousen", LocalDate.parse("2017-08-26"));
         assertAll("MJR",
-                  () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
-                  () -> assertEquals("Modern Java Recipes", book.getTitle()),
-                  () -> assertEquals("Ken Kousen", book.getAuthor()));
+                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
+                () -> assertEquals("Modern Java Recipes", book.getTitle()),
+                () -> assertEquals("Ken Kousen", book.getAuthor()),
+                () -> assertTrue(book.getPublicationDate().isBefore(LocalDate.now())));
     }
 
     @Test
@@ -77,21 +79,23 @@ public class AssertionsDemo {
         Book book = new Book("149197317X", "Modern Java Recipes",
                 "Ken Kousen", LocalDate.parse("2017-08-26"));
         assertAll("MJR",
-                  // ISBN and author name tests always run
-                  // Null check on title always runs
-                  () -> ISBNValidator.getInstance().isValidISBN10(book.getIsbn()),
-                  () -> {
-                      assertNotNull(book.getTitle());
+                // ISBN and author name tests always run
+                // Null check on title always runs
+                () -> ISBNValidator.getInstance().isValidISBN10(book.getIsbn()),
+                () -> {
+                    assertNotNull(book.getTitle());
 
-                      // The rest of the block skipped if null title
-                      String[] name = book.getTitle().split(" ");
-                      assertEquals(3, name.length);
-                      assertAll("title words",
-                                () -> assertTrue(name[0].startsWith("M")),
-                                () -> assertTrue(name[1].startsWith("J")),
-                                () -> assertTrue(name[2].startsWith("R")));
-                  },
-                  () -> assertEquals("Ken Kousen", book.getAuthor()));
+                    // The rest of the block skipped if null title
+                    String[] name = book.getTitle().split(" ");
+                    assertEquals(3, name.length);
+
+                    // Skipped if title has other than three words
+                    assertAll("title words",
+                            () -> assertTrue(name[0].startsWith("M")),
+                            () -> assertTrue(name[1].startsWith("J")),
+                            () -> assertTrue(name[2].startsWith("R")));
+                },
+                () -> assertEquals("Ken Kousen", book.getAuthor()));
     }
 
     private void throwException() {
@@ -109,7 +113,7 @@ public class AssertionsDemo {
     }
 
     @Test
-    // Junit 4: @Test(expected = IndexOutOfBoundsException.class)
+        // Junit 4: @Test(expected = IndexOutOfBoundsException.class)
     void exceptionWithoutMethodReference() {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
         IndexOutOfBoundsException ex =
