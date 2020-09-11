@@ -26,23 +26,29 @@ public class AssertionsDemo {
     @Test
     void testWithoutSupplier() {
         assertEquals("this is a string",  // expected
-                getCompleteString(), // test method
-                getErrorMessage());  // error message method called even if no error
-    }
-
-    @Test
-    void testWithSupplier() {
-        assertEquals("this is a string",  // expected
-                getCompleteString(), // test method
-                () -> "This should never happen");  // error message supplier
+                "this is a string",       // test method
+                getErrorMessage());       // error message method called even if no error
     }
 
     @Test
     void testWithSupplierMethod() {
         assertEquals("this is a string",  // expected
-                getCompleteString(), // test method
+                "this is a string", // test method
                 () -> getErrorMessage());  // error message supplier NOT CALLED if no error
     }
+
+    private String getErrorMessage() {
+        System.out.println("Inside getErrorMessage");
+        return "This should never happen";
+    }
+
+    @Test
+    void testWithSupplier() {
+        assertEquals("this is a string",  // expected
+                "this is a string",       // test method
+                () -> "This should never happen");  // error message supplier
+    }
+
 
     @Test
     void testWithSupplierMethodReference() {
@@ -55,11 +61,6 @@ public class AssertionsDemo {
         System.out.println("Inside the getCompleteString method");
         return "this" + " " + "is" +
                 " " + "a" + " " + "string";
-    }
-
-    private String getErrorMessage() {
-        System.out.println("Inside getErrorMessage");
-        return "This should never happen";
     }
 
     @Test
