@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MultipleFailures {
-    private final List<Integer> numbers = Arrays.asList(3, 1, 4, 1, 5, 9);
+    private final List<Integer> numbers = Arrays.asList(3, 1, 7, 1, 5, 9);
 
     @Test
     public void checkMultipleProperties() {
