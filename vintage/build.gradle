@@ -6,7 +6,7 @@ test {
 }
 
 dependencies {
-    testImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.13")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junitVersion")
 }
 
