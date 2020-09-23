@@ -73,7 +73,7 @@ public class ParameterizedTests {
     // Factory method for the @MethodSource
     //  no arguments
     //  static method (factory method)
-    //  returns Stream, Array, Iterable
+    //  returns Stream, Array, Iterable, Iterator
     private static IntStream primesLessThan100() {
         return IntStream.rangeClosed(2, 100)
                 .filter(UtilityMethods::isPrime);
@@ -134,7 +134,6 @@ public class ParameterizedTests {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
         assertAll(
-                () -> assertEquals(10, isbn.length()),
                 () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(isbn)),
                 () -> assertNotNull(title),
                 () -> assertNotNull(author),
