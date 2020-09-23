@@ -9,15 +9,16 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 public class AssumptionsDemo {
-    private Stack<String> stack = new Stack<>();
+    private final Stack<String> stack = new Stack<>();
 
     @Test
-    void stackIsEmpty() {
+    void popOnEmptyStack() {
         int size = stack.size();
 
         // Pre-condition violation: Only continue if stack is not empty
         assumeTrue(size > 0, "Stack must not be empty");
 
+        // We wanted to test the pop method, but only if the precondition is true
         stack.pop();
 
         // Post-condition: Should be one less item than before
@@ -25,7 +26,7 @@ public class AssumptionsDemo {
     }
 
     @Test
-    void stackIsNotEmpty() {
+    void popOnNotEmptyStack() {
         stack.push("element");
 
         int size = stack.size();
