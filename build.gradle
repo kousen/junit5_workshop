@@ -17,6 +17,9 @@ allprojects {
         useJUnitPlatform {
             excludeTags 'slow'
         }
+
+        // Gradle test parallelization
+        maxParallelForks = 4
     }
 
     dependencies {

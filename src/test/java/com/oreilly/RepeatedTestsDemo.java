@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // See https://junit.org/junit5/docs/current/user-guide/#writing-tests-repeated-tests-examples
 public class RepeatedTestsDemo {
-    private Logger logger = Logger.getLogger(RepeatedTestsDemo.class.getName());
+    private final Logger logger = Logger.getLogger(RepeatedTestsDemo.class.getName());
 
     @BeforeEach
     void beforeEach(TestInfo testInfo, RepetitionInfo repetitionInfo) {

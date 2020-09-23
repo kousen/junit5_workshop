@@ -1,13 +1,11 @@
 package com.oreilly;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.condition.*;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@TestInstance(TestInstance.Lifecycle.PER_METHOD)
 public class ConditionalTests {
     @Test
     @EnabledOnOs(OS.MAC)
@@ -48,5 +46,27 @@ public class ConditionalTests {
     @EnabledIfEnvironmentVariable(named = "ENV", matches = "staging-server")
     void onlyOnStagingServer() {
         // ...
+    }
+
+    @Test
+    @EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*")
+    void onlyOn64BitArchitectures() {
+        // ...
+    }
+
+    @Test
+    @EnabledIf("customCondition")
+    void enabled() {
+        // ...
+    }
+
+    @Test
+    @DisabledIf("customCondition")
+    void disabled() {
+        // ...
+    }
+
+    boolean customCondition() {
+        return true;
     }
 }
