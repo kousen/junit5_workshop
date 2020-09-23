@@ -119,7 +119,6 @@ public class ParameterizedTests {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
         assertAll(
-                () -> assertEquals(10, book.getIsbn().length()),
                 () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
                 () -> assertNotNull(book.getTitle()),
                 () -> assertNotNull(book.getAuthor()),
@@ -147,7 +146,6 @@ public class ParameterizedTests {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
         assertAll(
-                () -> assertEquals(10, book.getIsbn().length()),
                 () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
                 () -> assertNotNull(book.getTitle()),
                 () -> assertNotNull(book.getAuthor()),
@@ -162,7 +160,6 @@ public class ParameterizedTests {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
         assertAll(
-                () -> assertEquals(10, book.getIsbn().length()),
                 () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
                 () -> assertNotNull(book.getTitle()),
                 () -> assertNotNull(book.getAuthor()),
