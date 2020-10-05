@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.*;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,6 +16,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.params.provider.EnumSource.Mode.MATCH_ALL;
 
 @SuppressWarnings("Duplicates")
 public class ParameterizedTests {
@@ -98,6 +100,12 @@ public class ParameterizedTests {
     }
 
     @ParameterizedTest
+    @EnumSource(mode = MATCH_ALL, names = "^.*DAYS$")
+    void testWithEnumSourceRegex(ChronoUnit unit) {
+        assertTrue(unit.name().endsWith("DAYS"));
+    }
+
+    @ParameterizedTest
     @CsvSource({
             "Managing Your Manager, https://www.safaribooksonline.com/library/view/managing-your-manager/9781492031628/",
             "Reactive Spring, https://www.safaribooksonline.com/library/view/reactive-spring/9781492025733/",
@@ -128,7 +136,7 @@ public class ParameterizedTests {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/book_data.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/book_data.csv", numLinesToSkip = 1, delimiter = ',')
     void testBookSource(String isbn, String title, String author, LocalDate date) {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
