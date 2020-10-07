@@ -43,19 +43,19 @@ public class ConditionalTests {
     }
 
     @Test
-    @EnabledIfEnvironmentVariable(named = "ENV", matches = "staging-server")
-    void onlyOnStagingServer() {
-        // ...
-    }
-
-    @Test
     @EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*")
     void onlyOn64BitArchitectures() {
         // ...
     }
 
     @Test
-    @EnabledIf("customCondition")
+    @EnabledIfEnvironmentVariable(named = "ENV", matches = "staging-server")
+    void onlyOnStagingServer() {
+        // ...
+    }
+
+    @Test
+    @EnabledIf("customCondition")  // new in JUnit 5.7
     void enabled() {
         // ...
     }

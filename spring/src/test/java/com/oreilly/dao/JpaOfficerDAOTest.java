@@ -5,6 +5,7 @@ import com.oreilly.entities.Rank;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.condition.EnabledForJreRange;
 import org.junit.jupiter.api.condition.EnabledOnJre;
 import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 // @RunWith(SpringRunner.class) in JUnit 4
 @SpringBootTest
 @Transactional
-@EnabledOnJre({JRE.JAVA_8, JRE.JAVA_11})
+@EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_15)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JpaOfficerDAOTest {
     @Autowired

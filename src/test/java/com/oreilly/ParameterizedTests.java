@@ -99,7 +99,7 @@ public class ParameterizedTests {
         );
     }
 
-    @ParameterizedTest
+    @ParameterizedTest  // from user manual
     @EnumSource(mode = MATCH_ALL, names = "^.*DAYS$")
     void testWithEnumSourceRegex(ChronoUnit unit) {
         assertTrue(unit.name().endsWith("DAYS"));
