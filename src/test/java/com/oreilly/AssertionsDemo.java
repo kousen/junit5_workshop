@@ -26,35 +26,22 @@ public class AssertionsDemo {
     @Test
     void testWithoutSupplier() {
         assertEquals("this is a string",  // expected
-                getCompleteString(), // test method
+                "this is a string", // test method
                 getErrorMessage());  // error message method called even if no error
-    }
-
-    @Test
-    void testWithSupplier() {
-        assertEquals("this is a string",  // expected
-                getCompleteString(), // test method
-                () -> "This should never happen");  // error message supplier
     }
 
     @Test
     void testWithSupplierMethod() {
         assertEquals("this is a string",  // expected
-                getCompleteString(), // test method
+                "this is a string", // test method
                 () -> getErrorMessage());  // error message supplier NOT CALLED if no error
     }
 
     @Test
     void testWithSupplierMethodReference() {
         assertEquals("this is a string",  // expected
-                getCompleteString(), // test method
+                "this is a string", // test method
                 this::getErrorMessage);  // error message supplier NOT CALLED if no error
-    }
-
-    private String getCompleteString() {
-        System.out.println("Inside the getCompleteString method");
-        return "this" + " " + "is" +
-                " " + "a" + " " + "string";
     }
 
     private String getErrorMessage() {
@@ -104,16 +91,15 @@ public class AssertionsDemo {
             throw new IllegalArgumentException("Parsing problem");
     }
 
+    // In JUnit 4, this would be @Test(expected=IllegalArgumentException.class)
     @Test
-        // In JUnit 4, this would be @Test(expected=IllegalArgumentException.class)
     void exceptionTesting() {
-        Exception ex = assertThrows(IllegalArgumentException.class,
-                this::throwException);
+        Exception ex = assertThrows(IllegalArgumentException.class, this::throwException);
         assertEquals("Parsing problem", ex.getMessage());
     }
 
+    // Junit 4: @Test(expected = IndexOutOfBoundsException.class)
     @Test
-        // Junit 4: @Test(expected = IndexOutOfBoundsException.class)
     void exceptionWithoutMethodReference() {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
         IndexOutOfBoundsException ex =
@@ -137,6 +123,4 @@ public class AssertionsDemo {
     void timeoutExceededWithPreemption() {
         assertTimeoutPreemptively(Duration.ofMillis(100), () -> Thread.sleep(200));
     }
-
-
 }

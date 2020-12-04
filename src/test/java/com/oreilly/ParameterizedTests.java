@@ -20,9 +20,35 @@ import static org.junit.jupiter.params.provider.EnumSource.Mode.MATCH_ALL;
 
 @SuppressWarnings("Duplicates")
 public class ParameterizedTests {
-    private final List<Month> months = Stream.of(Month.values())
-            .collect(Collectors.toList());
+    private final List<Month> months =
+            Stream.of(Month.values()).collect(Collectors.toList());
 
+    @ParameterizedTest(name = "{0} is prime and less than 20")
+    @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19})
+    void valueIsPrime(int arg) {
+        assertTrue(UtilityMethods.isPrime(arg));
+    }
+
+    @ParameterizedTest(name = "{0} is composite and less than or equal to 20")
+    @ValueSource(ints = {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20})
+    void valueIsComposite(int argument) {
+        assertFalse(UtilityMethods.isPrime(argument));
+    }
+
+    @ParameterizedTest(name = "{0} is prime")
+    @MethodSource("primesLessThan100")
+    void checkPrimesLessThan100(int arg) {
+        assertTrue(UtilityMethods.isPrime(arg));
+    }
+
+    // Factory method for the @MethodSource
+    //  - no arguments
+    //  - static method (factory method)
+    //  - returns Stream, Array, Iterable, Iterator
+    private static IntStream primesLessThan100() {
+        return IntStream.rangeClosed(2, 100)
+                .filter(UtilityMethods::isPrime);
+    }
 
     @ParameterizedTest(name = "max of {0} and {1} is {2}")
     @MethodSource("maxWithArgsList")
@@ -44,49 +70,10 @@ public class ParameterizedTests {
         );
     }
 
-    private static Stream<Book> getBooks() {
-        return Stream.of(
-                new Book("1935182943", "Making Java Groovy",
-                        "Ken Kousen", LocalDate.parse("2013-09-30")),
-                new Book("1491947020", "Gradle Recipes for Android",
-                        "Ken Kousen", LocalDate.parse("2016-06-17")),
-                new Book("149197317X", "Modern Java Recipes",
-                        "Ken Kousen", LocalDate.parse("2017-08-26")));
-    }
-
-    @ParameterizedTest(name = "{0} is prime and less than 20")
-    @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19})
-    void valueIsPrime(int arg) {
-        assertTrue(UtilityMethods.isPrime(arg));
-    }
-
-    @ParameterizedTest(name = "{0} is composite and less than or equal to 20")
-    @ValueSource(ints = {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20})
-    void valueIsComposite(int argument) {
-        assertFalse(UtilityMethods.isPrime(argument));
-    }
-
-    @ParameterizedTest(name = "{0} is prime")
-    @MethodSource("primesLessThan100")
-    void checkPrimesLessThan100(int arg) {
-        assertTrue(UtilityMethods.isPrime(arg));
-    }
-
-    // Factory method for the @MethodSource
-    //  no arguments
-    //  static method (factory method)
-    //  returns Stream, Array, Iterable, Iterator
-    private static IntStream primesLessThan100() {
-        return IntStream.rangeClosed(2, 100)
-                .filter(UtilityMethods::isPrime);
-    }
-
-
     @ParameterizedTest(name = "{0} is not blank")
     @ValueSource(strings = {"this", "is", "a", "list", "of", "strings"})
     void noneAreBlank(String argument) {
         System.out.println("Testing " + argument + " is not blank");
-        //assertTrue(!argument.isBlank());
         assertTrue(argument.length() > 0);
     }
 
@@ -133,6 +120,14 @@ public class ParameterizedTests {
                 () -> assertTrue(book.getPublicationDate().isAfter(twentyThirteen) &&
                         book.getPublicationDate().isBefore(now))
         );
+    }
+
+    private static Stream<Book> getBooks() {
+        return Stream.of(
+                new Book("1935182943", "Making Java Groovy", "Ken Kousen", LocalDate.parse("2013-09-30")),
+                new Book("1491947020", "Gradle Recipes for Android", "Ken Kousen", LocalDate.parse("2016-06-17")),
+                new Book("149197317X", "Modern Java Recipes", "Ken Kousen", LocalDate.parse("2017-08-26")),
+                new Book("1492046671", "Kotlin Cookbook", "Ken Kousen", LocalDate.parse("2019-12-03")));
     }
 
     @ParameterizedTest
