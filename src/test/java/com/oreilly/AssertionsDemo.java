@@ -26,14 +26,14 @@ public class AssertionsDemo {
     @Test
     void testWithoutSupplier() {
         assertEquals("this is a string",  // expected
-                "this is a string", // test method
-                getErrorMessage());  // error message method called even if no error
+                "this is a string",       // test method
+                getErrorMessage());       // error message method called even if no error
     }
 
     @Test
     void testWithSupplierMethod() {
-        assertEquals("this is a string",  // expected
-                "this is a string", // test method
+        assertEquals("this is a string",   // expected
+                "this is a string",        // test method
                 () -> getErrorMessage());  // error message supplier NOT CALLED if no error
     }
 
@@ -49,11 +49,16 @@ public class AssertionsDemo {
         return "This should never happen";
     }
 
+    private Book findByIsbn(String isbn) {
+        if (isbn.equals("149197317X")) return
+                new Book("149197317X", "Modern Java Recipes",
+                        "Ken Kousen", LocalDate.parse("2017-08-26"));
+        else return null;
+    }
+
     @Test
     void assertAllBook() {
-        // Imagine this was service.findByIsbn("149197317X") to return Book
-        Book book = new Book("149197317X", "Modern Java Recipes",
-                "Ken Kousen", LocalDate.parse("2017-08-26"));
+        Book book = findByIsbn("149197317X");
         assertAll("MJR",
                 () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
                 () -> assertEquals("Modern Java Recipes", book.getTitle()),
@@ -63,8 +68,7 @@ public class AssertionsDemo {
 
     @Test
     void assertAllBookWithDependents() {
-        Book book = new Book("149197317X", "Modern Java Recipes",
-                "Ken Kousen", LocalDate.parse("2017-08-26"));
+        Book book = findByIsbn("149197317X");
         assertAll("MJR",
                 // ISBN and author name tests always run
                 // Null check on title always runs
@@ -103,8 +107,8 @@ public class AssertionsDemo {
     void exceptionWithoutMethodReference() {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
         IndexOutOfBoundsException ex =
-                assertThrows(IndexOutOfBoundsException.class, () -> strings.get(99));
-        assertThat(ex.getMessage(), containsString("99"));
+                assertThrows(IndexOutOfBoundsException.class, () -> strings.get(-1));
+        assertThat(ex.getMessage(), containsString("-1"));
     }
 
     @Test
