@@ -24,7 +24,6 @@ public class LifeCycleTest {
     @Test @DisplayName("A test with arguments")
     protected void test1(TestInfo info, TestReporter reporter) {
         reporter.publishEntry("test1", info.getDisplayName());
-        System.out.println();
         Optional<Class<?>> testClass = info.getTestClass();
         Optional<Method> testMethod = info.getTestMethod();
         if (testClass.isPresent() && testMethod.isPresent()) {

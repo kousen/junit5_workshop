@@ -26,9 +26,9 @@ allprojects {
     }
 }
 
-test {
-    maxParallelForks = 4
-}
+//test {
+//    maxParallelForks = 4
+//}
 
 dependencies {
     // Contains URL and ISBN validators
