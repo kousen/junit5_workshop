@@ -23,10 +23,8 @@ public class Algorithms {
         if (n < 0) throw new IllegalArgumentException(
                 "Argument must be positive");
         if (n == 0 || n == 1) return BigInteger.ONE;
-        return Stream.iterate(BigInteger.valueOf(2),
-                value -> value.add(BigInteger.ONE))
+        return Stream.iterate(BigInteger.valueOf(2), value -> value.add(BigInteger.ONE))
                 .limit(n-1)
-                .reduce(BigInteger.ONE,
-                        BigInteger::multiply);
+                .reduce(BigInteger.ONE, BigInteger::multiply);
     }
 }
