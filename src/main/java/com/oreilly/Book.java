@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Book {
-    private String isbn;
-    private String title;
-    private String author;
-    private LocalDate publicationDate;
+    private final String isbn;
+    private final String title;
+    private final String author;
+    private final LocalDate publicationDate;
 
     public Book(String isbn, String title, String author, LocalDate publicationDate) {
         this.isbn = isbn;
