@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlgorithmsTest {
-    private Algorithms algorithms = new Algorithms();
+    private final Algorithms algorithms = new Algorithms();
 
     @Test
     @DisplayName("Checking for small numbers")
@@ -44,7 +44,7 @@ class AlgorithmsTest {
     void checkExceptionForNegativeArg() {
         IllegalArgumentException ex =
                 assertThrows(IllegalArgumentException.class,
-                () -> algorithms.fact(-1));
+                        () -> algorithms.fact(-1));
         assertEquals("Argument must be positive", ex.getMessage());
     }
 
@@ -67,14 +67,18 @@ class AlgorithmsTest {
     @Test
     @Tag("slow")
     void showReduceMethodWithBigIntegerWorksForLargeValues() {
-        assertEquals( 35_660, getResultLength(10_000));
-        assertEquals( 77_338, getResultLength(20_000));
-        assertEquals(213_237, getResultLength(50_000));
-        assertTimeout(Duration.ofSeconds(5),
-                () -> assertEquals(456_574, getResultLength(100_000)));
+        assertAll(
+                () -> assertEquals(35_660, getResultLength(10_000)),
+                () -> assertEquals(77_338, getResultLength(20_000)),
+                () -> assertEquals(213_237, getResultLength(50_000)),
+                () -> assertTimeout(Duration.ofSeconds(5),
+                        () -> assertEquals(456_574, getResultLength(100_000)))
+        );
     }
 
     private int getResultLength(int i) {
-        return algorithms.factReduce(i).toString().length();
+        return algorithms.factReduce(i)
+                .toString()
+                .length();
     }
 }
