@@ -11,10 +11,15 @@ public class SimpleTest {
         assertEquals(2, 1 + 1);
     }
 
-    @Test @Disabled("Demo of string failure message")
+    private String getErrorMessage() {
+        System.out.println("Inside getErrorMessage");
+        return "Sum sound have been 5";
+    }
+
+    @Test // @Disabled("Demo of string failure message")
     void failureWithAStringMessage() {
         int x = 2;
         int y = 3;
-        assertEquals(2, x + y, "Sum should have been 2");
+        assertEquals(5, x + y, () -> "Sum should be " + (x + y));
     }
 }
