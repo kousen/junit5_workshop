@@ -2,6 +2,7 @@ package com.oreilly;
 
 import org.apache.commons.validator.routines.ISBNValidator;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.AggregateWith;
 import org.junit.jupiter.params.provider.*;
@@ -19,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.EnumSource.Mode.MATCH_ALL;
 
 @SuppressWarnings("Duplicates")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ParameterizedTests {
     private final List<Month> months =
             Stream.of(Month.values()).collect(Collectors.toList());
@@ -34,6 +36,10 @@ public class ParameterizedTests {
     void valueIsComposite(int argument) {
         assertFalse(UtilityMethods.isPrime(argument));
     }
+
+//    public ParameterizedTests() {
+//        System.out.println("inside ctor");
+//    }
 
     @ParameterizedTest(name = "{0} is prime")
     @MethodSource("primesLessThan100")

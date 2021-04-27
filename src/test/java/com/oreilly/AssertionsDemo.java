@@ -59,7 +59,7 @@ public class AssertionsDemo {
     @Test
     void assertAllBook() {
         Book book = findByIsbn("149197317X");
-        assertAll("MJR",
+        assertAll(
                 () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
                 () -> assertEquals("Modern Java Recipes", book.getTitle()),
                 () -> assertEquals("Ken Kousen", book.getAuthor()),
@@ -108,6 +108,7 @@ public class AssertionsDemo {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
         IndexOutOfBoundsException ex =
                 assertThrows(IndexOutOfBoundsException.class, () -> strings.get(-1));
+        System.out.println(ex);
         assertThat(ex.getMessage(), containsString("-1"));
     }
 
