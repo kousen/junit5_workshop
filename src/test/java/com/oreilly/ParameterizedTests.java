@@ -57,7 +57,8 @@ public class ParameterizedTests {
     }
 
     private static List<Arguments> maxWithArgsList() {
-        return Arrays.asList(Arguments.of(2, 1, 2),
+        return Arrays.asList(
+                Arguments.of(2, 1, 2),
                 Arguments.of(7, 3, 7),
                 Arguments.of(5, 5, 5));
     }
@@ -71,9 +72,9 @@ public class ParameterizedTests {
     }
 
     @ParameterizedTest(name = "{0} is not blank")
-    @ValueSource(strings = {"this", "is", "a", "list", "of", "strings"})
-    void noneAreBlank(String argument) {
-        System.out.println("Testing " + argument + " is not blank");
+    @ValueSource(strings = {"this", "is", "a", "list", "of", "strings", "  "})
+    void noneAreEmpty(String argument) {
+        System.out.println("Testing " + argument + " is not empty");
         assertTrue(argument.length() > 0);
     }
 
