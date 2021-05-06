@@ -2,9 +2,11 @@ package com.oreilly;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
@@ -38,6 +40,11 @@ public class AssumptionsDemo {
 
         // Post-condition: Should be one less item than before
         assertEquals(size - 1, stack.size());
+    }
+
+    @Test
+    void checkingForTheException() {
+        assertThrows(EmptyStackException.class, stack::pop);
     }
 
     @Test

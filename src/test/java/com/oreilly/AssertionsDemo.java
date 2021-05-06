@@ -108,6 +108,7 @@ public class AssertionsDemo {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
         IndexOutOfBoundsException ex =
                 assertThrows(IndexOutOfBoundsException.class, () -> strings.get(-1));
+        System.out.println(ex);
         assertThat(ex.getMessage(), containsString("-1"));
     }
 
