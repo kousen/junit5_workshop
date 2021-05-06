@@ -131,7 +131,7 @@ public class ParameterizedTests {
                 new Book("1492046671", "Kotlin Cookbook", "Ken Kousen", LocalDate.parse("2019-12-03")));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Checking {1}")
     @CsvFileSource(resources = "/book_data.csv", numLinesToSkip = 1, delimiter = ',')
     void testBookSource(String isbn, String title, String author, LocalDate date) {
         LocalDate now = LocalDate.now();
