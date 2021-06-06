@@ -15,7 +15,7 @@ public class FizzBuzz {
     }
 
     public static void main(String[] args) {
-        List<String> output = IntStream.range(1, 20)
+        List<String> output = IntStream.rangeClosed(1, 20)
                 .mapToObj(FizzBuzz::int2fizzbuzz)
                 .collect(Collectors.toList());
         System.out.println(output);
