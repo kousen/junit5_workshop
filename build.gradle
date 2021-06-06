@@ -5,7 +5,7 @@ allprojects {
     apply plugin: 'java-library'
     apply plugin: 'eclipse'
 
-    ext.junitVersion = '5.7.1'
+    ext.junitVersion = '5.7.2'
 
     repositories {
         mavenCentral()
@@ -23,6 +23,7 @@ allprojects {
     dependencies {
         testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
         testImplementation 'org.hamcrest:hamcrest:2.2'
+        testImplementation "net.jqwik:jqwik:1.5.1"
     }
 }
 
