@@ -71,6 +71,7 @@ public class ConditionalTests {
         // ...
     }
 
+    // method takes no arguments and returns a boolean
     boolean customCondition() {
         return true;
     }

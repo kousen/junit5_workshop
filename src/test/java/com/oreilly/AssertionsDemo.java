@@ -59,6 +59,7 @@ public class AssertionsDemo {
     @Test
     void assertAllBook() {
         Book book = findByIsbn("149197317X");
+        // assertAll(String header, Executable...)
         assertAll("MJR",
                 () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
                 () -> assertEquals("Modern Java Recipes", book.getTitle()),
@@ -98,7 +99,7 @@ public class AssertionsDemo {
     // In JUnit 4, this would be @Test(expected=IllegalArgumentException.class)
     @Test
     void exceptionTesting() {
-        Exception ex = assertThrows(IllegalArgumentException.class, this::throwException);
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> throwException());
         assertEquals("Parsing problem", ex.getMessage());
     }
 
@@ -109,7 +110,8 @@ public class AssertionsDemo {
         IndexOutOfBoundsException ex =
                 assertThrows(IndexOutOfBoundsException.class, () -> strings.get(-1));
         System.out.println(ex);
-        assertThat(ex.getMessage(), containsString("-1"));
+        // assertThat(ex.getMessage(), containsString("-1"));
+        assertTrue(ex.getMessage().contains("-1"));
     }
 
     @Test
