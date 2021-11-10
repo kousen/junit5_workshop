@@ -99,7 +99,8 @@ public class AssertionsDemo {
     // In JUnit 4, this would be @Test(expected=IllegalArgumentException.class)
     @Test
     void exceptionTesting() {
-        Exception ex = assertThrows(IllegalArgumentException.class, () -> throwException());
+        Exception ex = assertThrows(IllegalArgumentException.class,
+                () -> throwException());
         assertEquals("Parsing problem", ex.getMessage());
     }
 
