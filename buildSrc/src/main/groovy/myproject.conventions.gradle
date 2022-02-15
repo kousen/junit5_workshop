@@ -1,6 +1,6 @@
+//file:noinspection GroovyAssignabilityCheck
 plugins {
     id 'java-library'
-    id 'test-report-aggregation'
 }
 
 ext.junitVersion = '5.8.2'
