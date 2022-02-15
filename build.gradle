@@ -1,39 +1,26 @@
+plugins {
+    id 'myproject.conventions'
+}
+
 group 'com.kousenit'
 version '1.0'
 
-allprojects {
-    apply plugin: 'java-library'
-    apply plugin: 'eclipse'
 
-    ext.junitVersion = '5.8.2'
-
-    repositories {
-        mavenCentral()
+tasks.named('test') {
+    useJUnitPlatform {
+        excludeTags 'slow'
     }
 
-    test {
-        useJUnitPlatform {
-            excludeTags 'slow'
-        }
-
-        // Gradle test parallelization
-        maxParallelForks = 4
-    }
-
-    dependencies {
-        testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
-        testImplementation 'org.hamcrest:hamcrest:2.2'
-        testImplementation "net.jqwik:jqwik:1.6.4"
-    }
+    // Gradle test parallelization
+    maxParallelForks = 4
 }
 
-//test {
-//    maxParallelForks = 4
-//}
-
 dependencies {
-    // Contains URL and ISBN validators
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation "net.jqwik:jqwik:1.6.4"
+    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.assertj:assertj-db:2.0.2'
+
     implementation 'commons-validator:commons-validator:1.7'
     testImplementation 'org.mockito:mockito-junit-jupiter:4.3.1'
 }
-

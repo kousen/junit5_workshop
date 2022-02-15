@@ -1,3 +1,7 @@
+plugins {
+    id 'myproject.conventions'
+}
+
 test {
     useJUnitPlatform {
         includeEngines 'junit-vintage'

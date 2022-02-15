@@ -9,10 +9,10 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class JUnit4ListTests {
-    private static List<String> strings =
+    private static final List<String> strings =
             Arrays.asList("this", "is", "a", "list", "of", "strings");
 
-    private List<Integer> modifiable = new ArrayList<>();
+    private final List<Integer> modifiable = new ArrayList<>();
 
     @BeforeClass
     public static void runBefore() {

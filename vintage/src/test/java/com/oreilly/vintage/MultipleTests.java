@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class MultipleFailures {
+public class MultipleTests {
     private final List<Integer> numbers = Arrays.asList(3, 1, 7, 1, 5, 9);
 
     @Test

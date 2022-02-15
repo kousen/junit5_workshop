@@ -1,0 +1,22 @@
+plugins {
+    id 'java-library'
+    id 'test-report-aggregation'
+}
+
+ext.junitVersion = '5.8.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+//    testLogging {
+//        events "passed", "skipped", "failed"
+//    }
+}

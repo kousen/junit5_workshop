@@ -2,18 +2,13 @@ package com.oreilly.dao;
 
 import com.oreilly.entities.Officer;
 import com.oreilly.entities.Rank;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.condition.EnabledForJreRange;
-import org.junit.jupiter.api.condition.EnabledOnJre;
 import org.junit.jupiter.api.condition.JRE;
-import org.junit.jupiter.api.extension.ExtendWith;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -29,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 // @RunWith(SpringRunner.class) in JUnit 4
 @SpringBootTest
 @Transactional
-@EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_15)
+@EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_17)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JpaOfficerDAOTest {
     @Autowired
