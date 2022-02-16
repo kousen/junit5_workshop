@@ -14,8 +14,8 @@ public class ConditionalTests {
     }
 
     @Test
-    @EnabledOnOs({OS.LINUX, OS.SOLARIS})
-    void onlyOnLinuxOrSolaris() {
+    @EnabledOnOs({OS.LINUX, OS.SOLARIS, OS.WINDOWS})
+    void onlyOnLinuxSolarisWindows() {
         assertNotNull("abc");
     }
 
@@ -32,8 +32,8 @@ public class ConditionalTests {
     }
 
     @Test
-    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_11)
-    void okayForJREFrom8to11() {
+    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_17)
+    void okayForJREFrom8to17() {
     }
 
     @Test
