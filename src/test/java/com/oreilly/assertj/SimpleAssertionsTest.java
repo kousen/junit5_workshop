@@ -32,7 +32,7 @@ public class SimpleAssertionsTest {
                     .as("check %s's last name", jeanLuc.getFirst())
                     .isEqualTo("Picard");
             softAssertions.assertThat(jeanLuc.getDob()).isAfter(LocalDate.now());
-            softAssertions.assertThat(jeanLuc.getDob()).isAfterOrEqualTo(LocalDate.parse("2305-07-13"));
+            softAssertions.assertThat(jeanLuc.getDob()).isAfterOrEqualTo("2305-07-13");
         });
     }
 

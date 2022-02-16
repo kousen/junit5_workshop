@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.EnumSource.Mode.MATCH_ALL;
 
@@ -71,11 +72,11 @@ public class ParameterizedTests {
         );
     }
 
-    @ParameterizedTest(name = "{0} is not blank")
+    @ParameterizedTest(name = "{0} is not empty")
     @ValueSource(strings = {"this", "is", "a", "list", "of", "strings", "  "})
     void noneAreEmpty(String argument) {
-        System.out.println("Testing " + argument + " is not empty");
-        assertTrue(argument.length() > 0);
+        assertThat(argument).isNotEmpty();
+        // assertThat(argument).isNotBlank(); // one is blank, but not empty
     }
 
     @ParameterizedTest
