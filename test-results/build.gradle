@@ -18,5 +18,5 @@ reporting {
 }
 
 tasks.named('check') {
-    dependsOn tasks.named('testAggregateTestReport', TestReport) // <.>
+    dependsOn tasks.named('testAggregateTestReport', TestReport)
 }

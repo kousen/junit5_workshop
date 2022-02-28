@@ -5,4 +5,3 @@ plugins {
 repositories {
     gradlePluginPortal()
 }
-
