@@ -1,5 +1,6 @@
 plugins {
     id 'myproject.conventions'
+    id 'test-report-aggregation'
 }
 
 group 'com.kousenit'
@@ -14,7 +15,13 @@ tasks.named('test') {
     maxParallelForks = 4
 }
 
+tasks.named('check') {
+    dependsOn tasks.named('testAggregateTestReport', TestReport)
+}
+
 dependencies {
+    implementation project(':spring')
+    implementation project(':vintage')
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation "net.jqwik:jqwik:1.6.4"
     testImplementation 'org.assertj:assertj-core:3.22.0'

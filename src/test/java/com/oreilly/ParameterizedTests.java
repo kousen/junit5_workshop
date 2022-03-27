@@ -11,7 +11,6 @@ import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -22,7 +21,7 @@ import static org.junit.jupiter.params.provider.EnumSource.Mode.MATCH_ALL;
 @SuppressWarnings("Duplicates")
 public class ParameterizedTests {
     private final List<Month> months =
-            Stream.of(Month.values()).collect(Collectors.toList());
+            Stream.of(Month.values()).toList();
 
     @ParameterizedTest(name = "{0} is prime and less than 20")
     @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19})
@@ -59,11 +58,12 @@ public class ParameterizedTests {
 
     private static List<Arguments> maxWithArgsList() {
         return Arrays.asList(
-                Arguments.of(2, 1, 2),
+                Arguments.of(1, 2, 2),
                 Arguments.of(7, 3, 7),
                 Arguments.of(5, 5, 5));
     }
 
+    @SuppressWarnings("unused")
     private static Stream<Arguments> maxWithArgs() {
         return Stream.of(
                 Arguments.of(2, 1, 2),
