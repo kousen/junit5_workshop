@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@SuppressWarnings("unused")
 class FizzBuzzTest {
     @Property
     boolean every_third_element_starts_with_Fizz(@ForAll("divisibleBy3") int i) {
