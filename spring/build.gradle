@@ -6,7 +6,7 @@ plugins {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.6'
-    runtimeOnly 'com.h2database:h2:2.1.210'
+    runtimeOnly 'com.h2database:h2:2.1.212'
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation 'org.assertj:assertj-db:2.0.2'
 }
