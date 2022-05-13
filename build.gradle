@@ -27,5 +27,5 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.22.0'
 
     implementation 'commons-validator:commons-validator:1.7'
-    testImplementation 'org.mockito:mockito-junit-jupiter:4.4.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.5.1'
 }
