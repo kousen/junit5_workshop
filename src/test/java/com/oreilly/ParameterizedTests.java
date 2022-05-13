@@ -60,6 +60,8 @@ public class ParameterizedTests {
         return Arrays.asList(
                 Arguments.of(1, 2, 2),
                 Arguments.of(7, 3, 7),
+                Arguments.of(2, 4, 6, 8),   // last arg is ignored
+                // Arguments.of(3, 5),  // not enough args --> parameter resolver exception
                 Arguments.of(5, 5, 5));
     }
 
