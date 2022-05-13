@@ -26,8 +26,8 @@ public class ConditionalTests {
     }
 
     @Test
-    @EnabledOnJre({JRE.JAVA_10, JRE.JAVA_11})
-    void okayOnJava10and11() {
+    @EnabledOnJre({JRE.JAVA_8, JRE.JAVA_11})
+    void okayOnJava8and11() {
         assertTrue(true);
     }
 
@@ -39,7 +39,7 @@ public class ConditionalTests {
     @Test
     //@EnabledForJreRange(max = JRE.JAVA_17)
     @EnabledForJreRange(min = JRE.JAVA_9)
-    void jre8andAbove() {
+    void jre9andAbove() {
     }
 
     @Test

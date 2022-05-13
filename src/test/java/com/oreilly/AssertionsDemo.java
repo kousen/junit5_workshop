@@ -9,11 +9,9 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored", "Convert2MethodRef", "NewClassNamingConvention"})
+@SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored", "Convert2MethodRef", "NewClassNamingConvention", "ExcessiveLambdaUsage"})
 public class AssertionsDemo {
     @Test
     void standardAssertions() {
