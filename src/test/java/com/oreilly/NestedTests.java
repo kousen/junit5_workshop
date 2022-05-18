@@ -10,7 +10,8 @@ import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class NestedDemo {
+// based on: https://junit.org/junit5/docs/current/user-guide/#writing-tests-nested
+public class NestedTests {
     private Stack<Object> stack;
 
     @Test

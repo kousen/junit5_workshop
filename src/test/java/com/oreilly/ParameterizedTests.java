@@ -74,7 +74,7 @@ public class ParameterizedTests {
         );
     }
 
-    @ParameterizedTest(name = "{0} is not empty")
+    @ParameterizedTest(name = "The string \"{0}\" is not empty")
     @ValueSource(strings = {"this", "is", "a", "list", "of", "strings", "  "})
     void noneAreEmpty(String argument) {
         assertThat(argument).isNotEmpty();

@@ -2,6 +2,7 @@ package com.oreilly;
 
 import org.apache.commons.validator.routines.ISBNValidator;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -33,6 +34,7 @@ public class AssertionsDemo {
         assertEquals("this is a string",   // expected
                 "this is a string",        // test method
                 () -> getErrorMessage());  // error message supplier NOT CALLED if no error
+        assertTrue(true, () -> "This is a test");
     }
 
     @Test
@@ -111,6 +113,21 @@ public class AssertionsDemo {
         System.out.println(ex);
         // assertThat(ex.getMessage(), containsString("-1"));
         assertTrue(ex.getMessage().contains("-1"));
+    }
+
+    @Test @DisplayName("Arithmetic exception: / by zero")
+    void arithmeticExceptionWithInts() {
+        int x = 1;
+        int y = 0;
+        Exception exception = assertThrows(ArithmeticException.class, () -> System.out.println(x / y));
+        assertEquals("/ by zero", exception.getMessage());
+    }
+
+    @Test @DisplayName("IEEE 754 spec: Floating point / by zero results in INFINITY")
+    void noArithmeticExceptionWithDoubles() {
+        double x = 1.0;
+        double y = 0.0;
+        assertDoesNotThrow(() -> System.out.println(x / y));
     }
 
     @Test

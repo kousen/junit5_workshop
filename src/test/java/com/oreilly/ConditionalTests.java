@@ -56,7 +56,8 @@ public class ConditionalTests {
 
     @Test
     void showSystemProperties() {
-        System.getProperties().forEach((prop, value) -> System.out.println(prop + " = " + value));
+        System.getProperties()
+                .forEach((prop, value) -> System.out.println(prop + " = " + value));
     }
 
     @Test
