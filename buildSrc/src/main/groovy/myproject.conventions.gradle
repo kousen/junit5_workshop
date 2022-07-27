@@ -3,7 +3,7 @@ plugins {
     id 'java-library'
 }
 
-ext.junitVersion = '5.8.2'
+ext.junitVersion = '5.9.0'
 
 repositories {
     mavenCentral()
