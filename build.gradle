@@ -12,17 +12,17 @@ repositories {
 }
 
 dependencies {
-    testImplementation libs.commons.validator
     testImplementation libs.bundles.junit
     testImplementation libs.bundles.mockito
     testImplementation libs.assertj
     testImplementation libs.jqwik
+    testImplementation libs.commons.validator
 }
 
 tasks.named('test') {
     useJUnitPlatform {
         excludeTags 'slow'
     }
-    maxParallelForks = 4
+    maxParallelForks = Runtime.runtime.availableProcessors() / 2 + 1
 }
 
