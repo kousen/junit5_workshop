@@ -1,5 +1,5 @@
 plugins {
-    id 'myproject.conventions'
+    id 'java'
 }
 
 test {
@@ -9,12 +9,11 @@ test {
     }
 }
 
-dependencies {
-    testImplementation("junit:junit:4.13.2")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junitVersion")
-}
-
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    testImplementation libs.bundles.junit
 }
 

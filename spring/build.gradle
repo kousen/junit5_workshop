@@ -1,12 +1,16 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.2'
-    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
-    id 'myproject.conventions'
+    id 'java'
+    id 'org.springframework.boot' version '2.7.3'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+}
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    runtimeOnly 'com.h2database:h2:2.1.214'
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation 'org.assertj:assertj-db:2.0.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation libs.assertj.db
+    runtimeOnly libs.h2
 }

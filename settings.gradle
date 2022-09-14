@@ -14,4 +14,3 @@ include 'vintage'
 include 'test-results'
 
 rootProject.name = 'junit5_workshop'
-

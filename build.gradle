@@ -1,35 +1,27 @@
 plugins {
-    id 'myproject.conventions'
-    id 'test-report-aggregation'
+    id 'java'
+    alias(libs.plugins.versions)
+    alias(libs.plugins.version.catalog.update)
 }
 
 group 'com.kousenit'
 version '1.0'
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation libs.commons.validator
+    testImplementation libs.bundles.junit
+    testImplementation libs.bundles.mockito
+    testImplementation libs.assertj
+    testImplementation libs.jqwik
+}
+
 tasks.named('test') {
     useJUnitPlatform {
         excludeTags 'slow'
     }
-
-    // Gradle test parallelization
     maxParallelForks = 4
-}
-
-tasks.named('check') {
-    dependsOn tasks.named('testAggregateTestReport', TestReport)
-}
-
-dependencies {
-    implementation project(':spring')
-    implementation project(':vintage')
-    testImplementation 'org.hamcrest:hamcrest:2.2'
-    testImplementation "net.jqwik:jqwik:1.6.5"
-    testImplementation 'org.assertj:assertj-core:3.23.1'
-
-    implementation 'commons-validator:commons-validator:1.7'
-    testImplementation 'org.mockito:mockito-junit-jupiter:4.8.0'
-}
-
-repositories {
-    mavenCentral()
 }

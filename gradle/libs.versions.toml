@@ -1,0 +1,33 @@
+[versions]
+assertj = "3.23.1"
+assertj-db = "2.0.2"
+commons-validator = "1.7"
+h2 = "2.1.214"
+jqwik = "1.6.5"
+junit = "5.9.0"
+mockito = "4.8.0"
+
+[libraries]
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+assertj-db = { module = "org.assertj:assertj-db", version.ref = "assertj-db" }
+commons-validator = { module = "commons-validator:commons-validator", version.ref = "commons-validator" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+jqwik = { module = "net.jqwik:jqwik", version.ref = "jqwik" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+junit-vintage = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito" }
+mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
+
+[bundles]
+junit = [
+    "junit-jupiter",
+    "junit-vintage",
+]
+mockito = [
+    "mockito-inline",
+    "mockito-junit",
+]
+
+[plugins]
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.6.1"
+versions = "com.github.ben-manes.versions:0.42.0"
