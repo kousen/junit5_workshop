@@ -99,9 +99,10 @@ public class AssertionsDemo {
     // In JUnit 4, this would be @Test(expected=IllegalArgumentException.class)
     @Test
     void exceptionTesting() {
-        Exception ex = assertThrows(IllegalArgumentException.class,
-                () -> throwException());
+        Exception ex = assertThrows(Exception.class, () -> throwException());
+        Exception exc = assertThrowsExactly(IllegalArgumentException.class, () -> throwException());
         assertEquals("Parsing problem", ex.getMessage());
+        assertEquals("Parsing problem", exc.getMessage());
     }
 
     // Junit 4: @Test(expected = IndexOutOfBoundsException.class)
@@ -119,7 +120,8 @@ public class AssertionsDemo {
     void arithmeticExceptionWithInts() {
         int x = 1;
         int y = 0;
-        Exception exception = assertThrows(ArithmeticException.class, () -> System.out.println(x / y));
+        Exception exception = assertThrows(ArithmeticException.class,
+                () -> System.out.println(x / y));
         assertEquals("/ by zero", exception.getMessage());
     }
 
