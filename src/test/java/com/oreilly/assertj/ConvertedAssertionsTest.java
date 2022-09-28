@@ -3,8 +3,10 @@ package com.oreilly.assertj;
 import com.oreilly.Book;
 import org.apache.commons.validator.routines.ISBNValidator;
 import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -15,6 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored", "Convert2MethodRef"})
+@ExtendWith(SoftAssertionsExtension.class)
 public class ConvertedAssertionsTest {
     @Test
     void standardAssertions() {
@@ -47,19 +50,13 @@ public class ConvertedAssertionsTest {
         else return null;
     }
 
-    @Test
-    void assertAllBook() {
+    @Test // Uses AssertJ SoftAssertionsExtension to inject arg and execute at end
+    void assertAllBook(SoftAssertions softy) {
         Book book = findByIsbn("149197317X");
-        SoftAssertions softy = new SoftAssertions();
-        softy.assertThat(ISBNValidator.getInstance().isValidISBN10(book.getIsbn()))
-                .isTrue();
-        softy.assertThat(book.getTitle())
-                .isEqualTo("Modern Java Recipes");
-        softy.assertThat(book.getAuthor())
-                .isEqualTo("Ken Kousen");
-        softy.assertThat(book.getPublicationDate())
-                .isBefore(LocalDate.now());
-        softy.assertAll();
+        softy.assertThat(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())).isTrue();
+        softy.assertThat(book.getTitle()).isEqualTo("Modern Java Recipes");
+        softy.assertThat(book.getAuthor()).isEqualTo("Ken Kousen");
+        softy.assertThat(book.getPublicationDate()).isBefore(LocalDate.now());
     }
 
     @Test
@@ -68,14 +65,12 @@ public class ConvertedAssertionsTest {
         assertAll("MJR",
                 // ISBN and author name tests always run
                 // Null check on title always runs
-                () -> ISBNValidator.getInstance()
-                        .isValidISBN10(book.getIsbn()),
+                () -> ISBNValidator.getInstance().isValidISBN10(book.getIsbn()),
                 () -> {
                     assertThat(book.getTitle()).isNotNull();
 
                     // The rest of the block skipped if null title
-                    String[] name = book.getTitle()
-                            .split(" ");
+                    String[] name = book.getTitle().split(" ");
                     assertThat(name.length).isEqualTo(3);
 
                     // Skipped if title has other than three words
