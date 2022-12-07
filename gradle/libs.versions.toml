@@ -3,9 +3,9 @@ assertj = "3.23.1"
 assertj-db = "2.0.2"
 commons-validator = "1.7"
 h2 = "2.1.214"
-jqwik = "1.6.5"
+jqwik = "1.7.1"
 junit = "5.9.1"
-mockito = "4.8.0"
+mockito = "4.9.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -29,5 +29,5 @@ mockito = [
 ]
 
 [plugins]
-version-catalog-update = "nl.littlerobots.version-catalog-update:0.6.1"
-versions = "com.github.ben-manes.versions:0.42.0"
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.7.0"
+versions = "com.github.ben-manes.versions:0.44.0"
