@@ -3,7 +3,6 @@ package com.oreilly;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.*;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ConditionalTests {
@@ -16,7 +15,7 @@ public class ConditionalTests {
     @Test
     @EnabledOnOs({OS.LINUX, OS.SOLARIS, OS.WINDOWS})
     void onlyOnLinuxSolarisWindows() {
-        assertNotNull("abc");
+        // ...
     }
 
     @Test
@@ -26,7 +25,7 @@ public class ConditionalTests {
     }
 
     @Test
-    @EnabledOnJre({JRE.JAVA_8, JRE.JAVA_11})
+    @EnabledOnJre({JRE.JAVA_8, JRE.JAVA_11, JRE.JAVA_17})
     void okayOnJava8and11() {
         assertTrue(true);
     }
