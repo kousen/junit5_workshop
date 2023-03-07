@@ -26,7 +26,7 @@ public class ConditionalTests {
 
     @Test
     @EnabledOnJre({JRE.JAVA_8, JRE.JAVA_11, JRE.JAVA_17})
-    void okayOnJava8and11() {
+    void okayOnJava8and11and17() {
         assertTrue(true);
     }
 
@@ -81,4 +81,5 @@ public class ConditionalTests {
     boolean customCondition() {
         return true;
     }
+
 }

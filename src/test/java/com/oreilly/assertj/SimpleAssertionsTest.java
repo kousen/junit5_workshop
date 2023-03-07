@@ -1,14 +1,12 @@
 package com.oreilly.assertj;
 
 import com.oreilly.Person;
-import org.assertj.core.api.Condition;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
 
-import static org.assertj.core.api.Assertions.allOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SimpleAssertionsTest {
