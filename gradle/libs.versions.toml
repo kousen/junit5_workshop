@@ -29,5 +29,5 @@ mockito = [
 ]
 
 [plugins]
-version-catalog-update = "nl.littlerobots.version-catalog-update:0.7.0"
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.0"
 versions = "com.github.ben-manes.versions:0.46.0"
