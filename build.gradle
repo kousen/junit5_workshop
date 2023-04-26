@@ -19,7 +19,7 @@ dependencies {
     testImplementation libs.commons.validator
 }
 
-tasks.named('test') {
+tasks.named('test', Test) {
     useJUnitPlatform {
         excludeTags 'slow'
     }
