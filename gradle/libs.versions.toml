@@ -2,16 +2,14 @@
 assertj = "3.24.2"
 assertj-db = "2.0.2"
 commons-validator = "1.7"
-h2 = "2.1.214"
 jqwik = "1.7.3"
-junit = "5.9.2"
+junit = "5.9.3"
 mockito = "5.2.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 assertj-db = { module = "org.assertj:assertj-db", version.ref = "assertj-db" }
 commons-validator = { module = "commons-validator:commons-validator", version.ref = "commons-validator" }
-h2 = { module = "com.h2database:h2", version.ref = "h2" }
 jqwik = { module = "net.jqwik:jqwik", version.ref = "jqwik" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 junit-vintage = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
