@@ -12,27 +12,30 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored", "Convert2MethodRef", "NewClassNamingConvention", "ExcessiveLambdaUsage"})
+@SuppressWarnings({"ConstantConditions", "Convert2MethodRef", "NewClassNamingConvention", "ExcessiveLambdaUsage", "divzero"})
 public class AssertionsDemo {
     @Test
     void standardAssertions() {
-        assertEquals(2, 2);
         assertEquals(4, 2 + 2, "The optional assertion message is now the last parameter.");
         assertTrue('a' < 'b', () -> "Assertion messages can be lazily evaluated -- "
                 + "to avoid constructing complex messages unnecessarily.");
     }
 
+    private String getString() {
+        return "this is a string";
+    }
+
     @Test
     void testWithoutSupplier() {
         assertEquals("this is a string",  // expected
-                "this is a string",       // test method
-                getErrorMessage());       // error message method called even if no error
+                getString(),         // method to test
+                getErrorMessage());  // error message method called even if no error
     }
 
     @Test
     void testWithSupplierMethod() {
         assertEquals("this is a string",   // expected
-                "this is a string",        // test method
+                getString(),               // method to test
                 () -> getErrorMessage());  // error message supplier NOT CALLED if no error
         assertTrue(true, () -> "This is a test");
     }
@@ -40,7 +43,7 @@ public class AssertionsDemo {
     @Test
     void testWithSupplierMethodReference() {
         assertEquals("this is a string",  // expected
-                "this is a string", // test method
+                getString(),             // method to test
                 this::getErrorMessage);  // error message supplier NOT CALLED if no error
     }
 
@@ -49,6 +52,7 @@ public class AssertionsDemo {
         return "This should never happen";
     }
 
+    @SuppressWarnings("SameParameterValue")
     private Book findByIsbn(String isbn) {
         if (isbn.equals("149197317X")) return
                 new Book("149197317X", "Modern Java Recipes",
@@ -111,7 +115,6 @@ public class AssertionsDemo {
         List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
         IndexOutOfBoundsException ex =
                 assertThrows(IndexOutOfBoundsException.class, () -> strings.get(-1));
-        System.err.println(ex);
         // assertThat(ex.getMessage(), containsString("-1"));
         assertTrue(ex.getMessage().contains("-1"));
     }

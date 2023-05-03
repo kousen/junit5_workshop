@@ -41,8 +41,8 @@ public class JpaOfficerDAOTest {
     }
 
     @Test
-    public void findOneThatExists() {
-        template.query("select id from officers", (rs, num) -> rs.getInt("id"))
+    public void findOneThatExists(@Autowired JdbcTemplate jdbcTemplate) {
+        jdbcTemplate.query("select id from officers", (rs, num) -> rs.getInt("id"))
                 .forEach(id -> {
                     Optional<Officer> officer = dao.findById(id);
                     assertTrue(officer.isPresent());

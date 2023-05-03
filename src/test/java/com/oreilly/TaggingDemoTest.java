@@ -12,4 +12,13 @@ class TaggingDemoTest {
     void testingTaxCalculation() {
     }
 
+    @Tag("  fast  ")  // JUnit trims leading and trailing spaces
+    @Test
+    void fast_test() {
+    }
+
+    @Tag("slow")
+    @Test
+    void slow_test() {
+    }
 }

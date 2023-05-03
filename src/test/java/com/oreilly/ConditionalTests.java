@@ -82,4 +82,21 @@ public class ConditionalTests {
         return true;
     }
 
+    @Test
+    @EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*")
+    @EnabledIfSystemProperty(named = "user.country", matches = ".*US.*")
+    void runs_only_on_64bit_architectures_in_US() {
+        System.out.println("This test runs only on 64-bit architectures in the US");
+    }
+
+    @Test
+    @EnabledIf("hasAtLeastFourProcessors")
+    void only_runs_if_four_processors_available() {
+        System.out.println("This test runs only if there are at least 4 processors");
+    }
+
+    private boolean hasAtLeastFourProcessors() {
+        return Runtime.getRuntime().availableProcessors() >= 4;
+    }
+
 }
