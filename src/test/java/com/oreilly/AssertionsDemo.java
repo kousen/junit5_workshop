@@ -123,7 +123,8 @@ public class AssertionsDemo {
     void arithmeticExceptionWithInts() {
         int x = 1;
         int y = 0;
-        Exception exception = assertThrows(ArithmeticException.class,
+        Exception exception = assertThrows(
+                ArithmeticException.class,
                 () -> System.out.println(x / y));
         assertEquals("/ by zero", exception.getMessage());
     }
@@ -132,7 +133,9 @@ public class AssertionsDemo {
     void noArithmeticExceptionWithDoubles() {
         double x = 1.0;
         double y = 0.0;
-        assertDoesNotThrow(() -> System.out.println(x / y));
+        assertDoesNotThrow(() -> x/y);  // arg is a ThrowingSupplier<Double>
+        assertDoesNotThrow(
+                () -> assertEquals(Double.POSITIVE_INFINITY, x / y));
     }
 
     @Test
