@@ -14,7 +14,7 @@ jqwik = { module = "net.jqwik:jqwik", version.ref = "jqwik" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 junit-vintage = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
 mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito" }
-mockito-junit = "org.mockito:mockito-junit-jupiter:5.3.1"
+mockito-junit = "org.mockito:mockito-junit-jupiter:5.4.0"
 
 [bundles]
 junit = [
