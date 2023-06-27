@@ -58,7 +58,7 @@ public class ParameterizedTests {
 
     private static List<Arguments> maxWithArgsList() {
         return Arrays.asList(
-                Arguments.of(1, 2, 2),
+                Arguments.of(1, 2, "2"),  // parses 2 out of the string
                 Arguments.of(7, 3, 7),
                 Arguments.of(2, 4, 6, 8),   // last arg is ignored
                 // Arguments.of(3, 5),  // not enough args --> parameter resolver exception
@@ -82,7 +82,7 @@ public class ParameterizedTests {
     }
 
     @ParameterizedTest
-    @EnumSource(Month.class)
+    @EnumSource
     void monthsEnum(Month month) {
         assertAll(
                 () -> assertNotNull(month),

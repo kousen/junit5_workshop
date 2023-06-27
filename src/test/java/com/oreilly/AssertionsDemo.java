@@ -80,12 +80,12 @@ public class AssertionsDemo {
                 () -> ISBNValidator.getInstance().isValidISBN10(book.getIsbn()),
                 () -> {
                     assertNotNull(book.getTitle());
-
                     // The rest of the block skipped if null title
+
                     String[] name = book.getTitle().split(" ");
                     assertEquals(3, name.length);
-
                     // Skipped if title has other than three words
+
                     assertAll("title words",
                             () -> assertTrue(name[0].startsWith("M")),
                             () -> assertTrue(name[1].startsWith("J")),
@@ -133,7 +133,8 @@ public class AssertionsDemo {
     void noArithmeticExceptionWithDoubles() {
         double x = 1.0;
         double y = 0.0;
-        assertDoesNotThrow(() -> x/y);  // arg is a ThrowingSupplier<Double>
+        Double value = assertDoesNotThrow(() -> x / y);// arg is a ThrowingSupplier<Double>
+        System.out.println(value);
         assertDoesNotThrow(
                 () -> assertEquals(Double.POSITIVE_INFINITY, x / y));
     }

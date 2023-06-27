@@ -55,6 +55,6 @@ public class AssumptionsDemo {
 
     @Test
     void assumingThatWithPop() {
-        assumingThat(stack.size() > 0, stack::pop);
+        assumingThat(!stack.isEmpty(), stack::pop);
     }
 }
