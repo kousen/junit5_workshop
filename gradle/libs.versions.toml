@@ -4,7 +4,7 @@ assertj-db = "2.0.2"
 commons-validator = "1.7"
 jqwik = "1.7.3"
 junit = "5.10.0-M1"
-mockito = "5.2.0"
+mockito = "5.4.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -13,8 +13,8 @@ commons-validator = { module = "commons-validator:commons-validator", version.re
 jqwik = { module = "net.jqwik:jqwik", version.ref = "jqwik" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 junit-vintage = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
-mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito" }
-mockito-junit = "org.mockito:mockito-junit-jupiter:5.3.1"
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
 
 [bundles]
 junit = [
@@ -22,7 +22,7 @@ junit = [
     "junit-vintage",
 ]
 mockito = [
-    "mockito-inline",
+    "mockito-core",
     "mockito-junit",
 ]
 
