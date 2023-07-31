@@ -9,8 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
-@SuppressWarnings("NewClassNamingConvention")
-public class AssumptionsDemo {
+public class AssumptionsTests {
     private final Stack<String> stack = new Stack<>();
 
     @Test

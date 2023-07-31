@@ -8,8 +8,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import static java.net.http.HttpRequest.newBuilder;
-
 public class AstroGateway {
     private final HttpClient client = HttpClient.newHttpClient();
     private final Gson gson = new Gson();
@@ -23,20 +21,6 @@ public class AstroGateway {
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    HttpResponse<Void> getResponseToHeadRequest() {
-        HttpRequest req = newBuilder()
-                .uri(URI.create("http://api.open-notify.org"))
-                .method("HEAD", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<Void> response;
-        try {
-            response = client.send(req, HttpResponse.BodyHandlers.discarding());
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return response;
     }
 
 }

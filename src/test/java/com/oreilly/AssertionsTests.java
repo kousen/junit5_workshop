@@ -10,17 +10,14 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SuppressWarnings({"ConstantConditions", "Convert2MethodRef", "NewClassNamingConvention", "ExcessiveLambdaUsage", "divzero"})
-public class AssertionsDemo {
+@SuppressWarnings({"ConstantConditions", "Convert2MethodRef", "divzero"})
+public class AssertionsTests {
     @Test
     void standardAssertions() {
-        assertEquals(4, 2 + 2, "The optional assertion message is now the last parameter.");
-        assertTrue('a' < 'b', () -> "Assertion messages can be lazily evaluated -- "
-                + "to avoid constructing complex messages unnecessarily.");
+        assertEquals(4, 2 + 2,
+                "The optional assertion message is now the last parameter.");
     }
 
     private String getString() {
@@ -39,7 +36,6 @@ public class AssertionsDemo {
         assertEquals("this is a string",   // expected
                 getString(),               // method to test
                 () -> getErrorMessage());  // error message supplier NOT CALLED if no error
-        assertTrue(true, () -> "This is a test");
     }
 
     @Test
