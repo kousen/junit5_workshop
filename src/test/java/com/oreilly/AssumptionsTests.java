@@ -1,5 +1,6 @@
 package com.oreilly;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.EmptyStackException;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assumptions.assumingThat;
 public class AssumptionsTests {
     private final Stack<String> stack = new Stack<>();
 
-    @Test
+    @Test @DisplayName("pop() on empty stack skipped by precondition failure")
     void popOnEmptyStack() {
         int size = stack.size();
 
@@ -29,7 +30,7 @@ public class AssumptionsTests {
         );
     }
 
-    @Test
+    @Test @DisplayName("pop() on non-empty stack succeeds")
     void popOnNotEmptyStack() {
         stack.push("element");
 
@@ -40,19 +41,19 @@ public class AssumptionsTests {
 
         String value = stack.pop();
 
-        // Post-condition: Should be one less item than before
+        // Post-condition: Should be one less (one fewer?) item than before
         assertAll(
                 () -> assertEquals(size - 1, stack.size()),
                 () -> assertEquals("element", value)
         );
     }
 
-    @Test
+    @Test @DisplayName("pop() on empty stack throws exception in regular Java")
     void checkingForTheException() {
         assertThrows(EmptyStackException.class, stack::pop);
     }
 
-    @Test
+    @Test @DisplayName("assumingThat both checks and executes")
     void assumingThatWithPop() {
         assumingThat(!stack.isEmpty(), stack::pop);
     }
