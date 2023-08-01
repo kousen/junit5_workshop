@@ -1,5 +1,6 @@
 package com.oreilly;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,8 +14,18 @@ import static org.junit.jupiter.api.Assumptions.assumingThat;
 public class AssumptionsTests {
     private final Stack<String> stack = new Stack<>();
 
+    @Test @DisplayName("pop() on empty stack throws exception in regular Java")
+    void checkingForTheException() {
+        assertThrows(EmptyStackException.class, stack::pop);
+    }
+
+    @Test @Disabled("enable for demo only")
+    void callPopOnEmptyStackToSeeException() {
+        stack.pop();
+    }
+
     @Test @DisplayName("pop() on empty stack skipped by precondition failure")
-    void popOnEmptyStack() {
+    void callPopOnEmptyStack_protected() {
         int size = stack.size();
 
         // Pre-condition violation: Only continue if stack is not empty
@@ -48,10 +59,6 @@ public class AssumptionsTests {
         );
     }
 
-    @Test @DisplayName("pop() on empty stack throws exception in regular Java")
-    void checkingForTheException() {
-        assertThrows(EmptyStackException.class, stack::pop);
-    }
 
     @Test @DisplayName("assumingThat both checks and executes")
     void assumingThatWithPop() {
