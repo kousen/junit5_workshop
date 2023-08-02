@@ -59,9 +59,16 @@ public class AssumptionsTests {
         );
     }
 
-
     @Test @DisplayName("assumingThat both checks and executes")
     void assumingThatWithPop() {
         assumingThat(!stack.isEmpty(), stack::pop);
+
+        // assumingThat does NOT skip the rest of the method
+        System.out.println("This line is still printed");
+        assertAll(
+                () -> assertEquals(0, stack.size()),
+                () -> assertThrows(EmptyStackException.class, stack::pop),
+                () -> System.out.println("This line is also printed")
+        );
     }
 }
