@@ -5,7 +5,7 @@ commons-validator = "1.7"
 gson = "2.10.1"
 jqwik = "1.7.4"
 junit = "5.10.0"
-mockito = "5.4.0"
+mockito = "5.5.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
