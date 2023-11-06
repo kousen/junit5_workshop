@@ -4,7 +4,7 @@ assertj-db = "2.0.2"
 commons-validator = "1.7"
 gson = "2.10.1"
 jqwik = "1.8.1"
-junit = "5.10.0"
+junit = "5.10.1"
 mockito = "5.7.0"
 
 [libraries]
