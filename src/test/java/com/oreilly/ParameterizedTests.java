@@ -139,6 +139,7 @@ public class ParameterizedTests {
     void testBookSource(String isbn, String title, String author, LocalDate date) {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
+
         assertAll(
                 () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(isbn) ||
                                  ISBNValidator.getInstance().isValidISBN13(isbn)),
