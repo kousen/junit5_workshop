@@ -2,27 +2,35 @@ package com.oreilly.functionalinterfaces;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.logging.Logger;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings("Convert2MethodRef")
 public class LazyErrorMessageTest {
+    private final Logger log = Logger.getLogger(this.getClass().getName());
 
-    // method to create an error message
-    // could add a delay to simulate complex process...
     private String createErrorMessage() {
         System.out.println("Creating error message...");
         return "Error message";
     }
 
-    // eager evaluation: error message created even when test passes
+    private String getLogMessage() {
+        log.info("Creating log message...");
+        return "Log message";
+    }
+
+    // eager evaluation
     @Test
     public void eagerTest() {
+        log.fine(getLogMessage());
         assertTrue(true, createErrorMessage());
     }
 
-    // lazy evaluation: error message created only when test fails
+    // lazy evaluation
     @Test
     public void lazyTest() {
+        log.fine(() -> getLogMessage());
         assertTrue(true, () -> createErrorMessage());
         assertTrue(true, this::createErrorMessage);
     }
