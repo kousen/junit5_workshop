@@ -17,7 +17,7 @@ public class AssertionsTests {
     @Test
     void standardAssertions() {
         assertEquals(4, 2 + 2,
-                "The optional assertion message is now the last parameter.");
+                "The optional error message is now the last parameter.");
     }
 
     private String getString() {
@@ -63,10 +63,10 @@ public class AssertionsTests {
         Book book = findByIsbn("149197317X");
         // assertAll(String header, Executable...)
         assertAll("MJR",
-                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
-                () -> assertEquals("Modern Java Recipes", book.getTitle()),
-                () -> assertEquals("Ken Kousen", book.getAuthor()),
-                () -> assertTrue(book.getPublicationDate().isBefore(LocalDate.now())));
+                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.isbn())),
+                () -> assertEquals("Modern Java Recipes", book.title()),
+                () -> assertEquals("Ken Kousen", book.author()),
+                () -> assertTrue(book.publicationDate().isBefore(LocalDate.now())));
     }
 
     @Test
@@ -75,12 +75,12 @@ public class AssertionsTests {
         assertAll("MJR",
                 // ISBN and author name tests always run
                 // Null check on title always runs
-                () -> ISBNValidator.getInstance().isValidISBN10(book.getIsbn()),
+                () -> ISBNValidator.getInstance().isValidISBN10(book.isbn()),
                 () -> {
-                    assertNotNull(book.getTitle());
+                    assertNotNull(book.title());
                     // The rest of the block skipped if null title
 
-                    String[] name = book.getTitle().split(" ");
+                    String[] name = book.title().split(" ");
                     assertEquals(3, name.length);
                     // Skipped if title has other than three words
 
@@ -89,7 +89,7 @@ public class AssertionsTests {
                             () -> assertTrue(name[1].startsWith("J")),
                             () -> assertTrue(name[2].startsWith("R")));
                 },
-                () -> assertEquals("Ken Kousen", book.getAuthor()));
+                () -> assertEquals("Ken Kousen", book.author()));
     }
 
     private void throwException() {
@@ -116,6 +116,16 @@ public class AssertionsTests {
         // assertThat(ex.getMessage(), containsString("-1"));
         assertTrue(ex.getMessage().contains("-1"));
     }
+
+
+    // Binary numbers
+    // To the left of the decimal 1's, 2's, 4's, 8's, 16's, ...
+    //    So 1010 is 10 in decimal
+    // To the right of the decimal 1/2, 1/4, 1/8, 1/16, ...
+    //    So 0.101 is 1/2 + 1/8 = 5/8 in decimal
+    //    0.1 in decimal is a repeating decimal in binary --> can't get exact precision
+    // So you can't represent floating point numbers exactly in binary
+    // IEEE 754 standard for floating point numbers --> mantissa, exponent, ...
 
     @Test @DisplayName("Arithmetic exception: / by zero")
     void arithmeticExceptionWithInts() {

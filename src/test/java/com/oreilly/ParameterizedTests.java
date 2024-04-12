@@ -118,11 +118,11 @@ public class ParameterizedTests {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
         assertAll(
-                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn())),
-                () -> assertNotNull(book.getTitle()),
-                () -> assertNotNull(book.getAuthor()),
-                () -> assertTrue(book.getPublicationDate().isAfter(twentyThirteen) &&
-                        book.getPublicationDate().isBefore(now))
+                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.isbn())),
+                () -> assertNotNull(book.title()),
+                () -> assertNotNull(book.author()),
+                () -> assertTrue(book.publicationDate().isAfter(twentyThirteen) &&
+                                 book.publicationDate().isBefore(now))
         );
     }
 
@@ -155,12 +155,12 @@ public class ParameterizedTests {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
         assertAll(
-                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn()) ||
-                                 ISBNValidator.getInstance().isValidISBN13(book.getIsbn())),
-                () -> assertNotNull(book.getTitle()),
-                () -> assertNotNull(book.getAuthor()),
-                () -> assertTrue(book.getPublicationDate().isAfter(twentyThirteen) &&
-                        book.getPublicationDate().isBefore(now))
+                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.isbn()) ||
+                                 ISBNValidator.getInstance().isValidISBN13(book.isbn())),
+                () -> assertNotNull(book.title()),
+                () -> assertNotNull(book.author()),
+                () -> assertTrue(book.publicationDate().isAfter(twentyThirteen) &&
+                                 book.publicationDate().isBefore(now))
         );
     }
 
@@ -170,12 +170,12 @@ public class ParameterizedTests {
         LocalDate now = LocalDate.now();
         LocalDate twentyThirteen = LocalDate.of(2013, Month.JANUARY, 1);
         assertAll(
-                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.getIsbn()) ||
-                                 ISBNValidator.getInstance().isValidISBN13(book.getIsbn())),
-                () -> assertNotNull(book.getTitle()),
-                () -> assertNotNull(book.getAuthor()),
-                () -> assertTrue(book.getPublicationDate().isAfter(twentyThirteen) &&
-                        book.getPublicationDate().isBefore(now))
+                () -> assertTrue(ISBNValidator.getInstance().isValidISBN10(book.isbn()) ||
+                                 ISBNValidator.getInstance().isValidISBN13(book.isbn())),
+                () -> assertNotNull(book.title()),
+                () -> assertNotNull(book.author()),
+                () -> assertTrue(book.publicationDate().isAfter(twentyThirteen) &&
+                                 book.publicationDate().isBefore(now))
         );
     }
 
