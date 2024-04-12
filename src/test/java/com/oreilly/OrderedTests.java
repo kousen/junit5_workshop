@@ -7,7 +7,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 // From User manual: https://junit.org/junit5/docs/current/user-guide/#writing-tests-test-execution-order
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class OrderedTestsDemo {
+public class OrderedTests {
 
     @Test
     @Order(1)
