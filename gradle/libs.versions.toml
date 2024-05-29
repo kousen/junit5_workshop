@@ -1,7 +1,7 @@
 [versions]
 assertj = "3.26.0"
 assertj-db = "2.0.2"
-commons-validator = "1.8.0"
+commons-validator = "1.9.0"
 gson = "2.11.0"
 jqwik = "1.8.5"
 junit = "5.10.2"
