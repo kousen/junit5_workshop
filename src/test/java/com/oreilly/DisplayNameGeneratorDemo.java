@@ -1,13 +1,12 @@
 package com.oreilly;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.IndicativeSentencesGeneration;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.time.Year;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 // From https://junit.org/junit5/docs/current/user-guide/#writing-tests-display-name-generator
 @SuppressWarnings("NewClassNamingConvention")
@@ -42,6 +41,7 @@ class DisplayNameGeneratorDemo {
         @ParameterizedTest(name = "Year {0} is a leap year.")
         @ValueSource(ints = { 2016, 2020, 2048 })
         void if_it_is_one_of_the_following_years(int year) {
+            assertTrue(Year.isLeap(year));
         }
 
     }
