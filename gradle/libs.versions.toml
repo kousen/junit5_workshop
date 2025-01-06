@@ -1,5 +1,5 @@
 [versions]
-assertj = "3.27.1"
+assertj = "3.27.2"
 assertj-db = "3.0.0"
 commons-validator = "1.9.0"
 gson = "2.11.0"
