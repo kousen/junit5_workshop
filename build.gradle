@@ -19,7 +19,7 @@ dependencies {
     testImplementation libs.assertj
     testImplementation libs.jqwik
     testImplementation libs.commons.validator
-    testImplementation 'org.apache.commons:commons-collections4:4.4'
+    testImplementation libs.commons.collections
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

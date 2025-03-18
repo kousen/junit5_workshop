@@ -1,15 +1,16 @@
 [versions]
-assertj = "3.26.3"
+assertj = "4.0.0-M1"
 assertj-db = "3.0.0"
 commons-validator = "1.9.0"
-gson = "2.11.0"
-jqwik = "1.9.1"
-junit = "5.11.3"
-mockito = "5.14.2"
+gson = "2.12.1"
+jqwik = "1.9.2"
+junit = "5.12.1"
+mockito = "5.16.1"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 assertj-db = { module = "org.assertj:assertj-db", version.ref = "assertj-db" }
+commons-collections = "org.apache.commons:commons-collections4:4.5.0-M3"
 commons-validator = { module = "commons-validator:commons-validator", version.ref = "commons-validator" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 jqwik = { module = "net.jqwik:jqwik", version.ref = "jqwik" }
@@ -30,4 +31,4 @@ mockito = [
 
 [plugins]
 version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.5"
-versions = "com.github.ben-manes.versions:0.51.0"
+versions = "com.github.ben-manes.versions:0.52.0"
