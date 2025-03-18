@@ -1,5 +1,5 @@
 plugins {
-    id("com.gradle.enterprise") version "3.18.2"
+    id("com.gradle.develocity") version "3.19.2"
 }
 
 gradleEnterprise {
@@ -13,6 +13,5 @@ gradleEnterprise {
 
 include 'spring'
 include 'vintage'
-include 'test-results'
 
 rootProject.name = 'junit5_workshop'

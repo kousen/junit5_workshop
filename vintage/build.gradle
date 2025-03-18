@@ -15,5 +15,6 @@ repositories {
 
 dependencies {
     testImplementation libs.bundles.junit
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
