@@ -1,18 +1,16 @@
 plugins {
-    id("com.gradle.enterprise") version "3.18.2"
+    id("com.gradle.develocity") version "3.19.2"
 }
 
-gradleEnterprise {
-    develocity {
-        buildScan {
-            termsOfUseUrl = "https://gradle.com/terms-of-service"
-            termsOfUseAgree = "yes"
-        }
+develocity {
+    buildScan {
+        termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
+        termsOfUseAgree = "yes"
     }
 }
 
 include 'spring'
 include 'vintage'
-include 'test-results'
+//include 'test-results'
 
 rootProject.name = 'junit5_workshop'
