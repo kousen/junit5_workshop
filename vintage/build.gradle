@@ -7,6 +7,9 @@ test {
         includeEngines 'junit-vintage'
         excludeEngines 'junit-jupiter'
     }
+    
+    // Disable class data sharing
+    jvmArgs '-Xshare:off'
 }
 
 repositories {

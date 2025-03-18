@@ -18,4 +18,7 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    
+    // Disable class data sharing
+    jvmArgs '-Xshare:off'
 }

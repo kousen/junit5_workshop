@@ -27,5 +27,8 @@ tasks.named('test', Test) {
         excludeTags 'slow'
     }
     maxParallelForks = Runtime.runtime.availableProcessors() / 2 + 1
+    
+    // Disable class data sharing
+    jvmArgs '-Xshare:off'
 }
 
