@@ -28,26 +28,26 @@ public class AdvancedFeaturesTest {
     @Test
     void descriptiveAssertions() {
         // Using assertThat with as() for better failure messages
-        assertThat(jeanLuc.getFirst())
+        assertThat(jeanLuc.first())
                 .as("Captain's first name")
                 .isEqualTo("Jean-Luc");
                 
         // Using assertThat with describedAs() for better failure messages
-        assertThat(jeanLuc.getLast())
+        assertThat(jeanLuc.last())
                 .describedAs("Captain's last name")
                 .isEqualTo("Picard");
                 
         // Using overrideErrorMessage for complete control over error message
-        assertThat(jeanLuc.getDob())
+        assertThat(jeanLuc.dob())
                 .overridingErrorMessage("Expected Captain Picard's birth date to be %s but was %s",
-                        LocalDate.of(2305, Month.JULY, 13), jeanLuc.getDob())
+                        LocalDate.of(2305, Month.JULY, 13), jeanLuc.dob())
                 .isEqualTo(LocalDate.of(2305, Month.JULY, 13));
     }
     
     @Test
     void predicateAssertions() {
         // Creating a condition from a predicate
-        Predicate<Person> hasLastNamePredicate = person -> person.getLast() != null;
+        Predicate<Person> hasLastNamePredicate = person -> person.last() != null;
         org.assertj.core.api.Condition<Person> hasLastName = 
                 new org.assertj.core.api.Condition<>(hasLastNamePredicate, "has last name");
         
@@ -57,22 +57,22 @@ public class AdvancedFeaturesTest {
                     org.assertj.core.api.Assertions.allOf(
                         hasLastName,
                         new org.assertj.core.api.Condition<>(
-                            person -> person.getFirst().equals("Data"),
+                            person -> person.first().equals("Data"),
                             "is Data")
                     )
                 );
         
         // Using anyMatch/allMatch/noneMatch
         assertThat(characters)
-                .anyMatch(person -> person.getFirst().equals("Data"))
-                .allMatch(person -> person.getDob() != null) // Changed from getAge() > 0 which may fail based on current date
-                .noneMatch(person -> person.getFirst().equals("Wesley"));
+                .anyMatch(person -> person.first().equals("Data"))
+                .allMatch(person -> person.dob() != null) // Changed from getAge() > 0 which may fail based on current date
+                .noneMatch(person -> person.first().equals("Wesley"));
                 
         // Combining multiple predicates
         assertThat(characters)
                 .filteredOn(hasLastNamePredicate)
                 .hasSize(2)
-                .extracting(Person::getFirst)
+                .extracting(Person::first)
                 .contains("Jean-Luc", "Worf");
     }
     
@@ -110,8 +110,8 @@ public class AdvancedFeaturesTest {
                 LocalDate.of(2305, Month.JULY, 14)); // Different birth date
                 
         assertThat(jeanLucCopy)
-                .usingComparator((p1, p2) -> 
-                    p1.getFirst().equals(p2.getFirst()) && p1.getLast().equals(p2.getLast()) ? 0 : 1)
+                .usingComparator((p1, p2) ->
+                        p1.first().equals(p2.first()) && p1.last().equals(p2.last()) ? 0 : 1)
                 .isEqualTo(jeanLuc);
     }
     
@@ -120,7 +120,7 @@ public class AdvancedFeaturesTest {
         // Define a custom condition
         org.assertj.core.api.Condition<Person> starfleetOfficer = 
                 new org.assertj.core.api.Condition<>(
-                    person -> person.getLast() != null && person.getFirst() != null,
+                    person -> person.last() != null && person.first() != null,
                     "Starfleet officer");
         
         assertThat(jeanLuc)
@@ -137,14 +137,14 @@ public class AdvancedFeaturesTest {
     @Test
     void assumptionsWithAssertJ() {
         // Using AssertJ's assumptions
-        assumeThat(jeanLuc.getLast()).isEqualTo("Picard");
+        assumeThat(jeanLuc.last()).isEqualTo("Picard");
         
         // This assertion will only be executed if the assumption passes
-        assertThat(jeanLuc.getFirst()).isEqualTo("Jean-Luc");
+        assertThat(jeanLuc.first()).isEqualTo("Jean-Luc");
         
         // Multiple assumptions
         assumeThat(characters).hasSize(3);
-        assumeThat(characters).extracting(Person::getFirst).contains("Data");
+        assumeThat(characters).extracting(Person::first).contains("Data");
         
         // This assertion will only be executed if all assumptions pass
         assertTrue(true);

@@ -2,6 +2,8 @@ package com.oreilly.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "officers")
 public class Officer {
@@ -72,13 +74,11 @@ public class Officer {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Officer)) return false;
-
-        Officer officer = (Officer) o;
+        if (!(o instanceof Officer officer)) return false;
 
         if (!id.equals(officer.id)) return false;
         if (rank != officer.rank) return false;
-        if (first != null ? !first.equals(officer.first) : officer.first != null) return false;
+        if (!Objects.equals(first, officer.first)) return false;
         return last.equals(officer.last);
     }
 

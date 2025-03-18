@@ -2,12 +2,10 @@ package com.oreilly.jqwik;
 
 import com.oreilly.Person;
 import net.jqwik.api.*;
-import net.jqwik.api.Tuple.Tuple2;
 import net.jqwik.api.arbitraries.ListArbitrary;
 import net.jqwik.api.constraints.*;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,9 +82,9 @@ class CollectionPropertiesTest {
         
         Person person = new Person(firstName, lastName, birthDate);
         
-        assertThat(person.getFirst()).isEqualTo(firstName);
-        assertThat(person.getLast()).isEqualTo(lastName);
-        assertThat(person.getDob()).isEqualTo(birthDate);
+        assertThat(person.first()).isEqualTo(firstName);
+        assertThat(person.last()).isEqualTo(lastName);
+        assertThat(person.dob()).isEqualTo(birthDate);
         assertThat(person.getName()).isEqualTo(firstName + " " + lastName);
     }
     
