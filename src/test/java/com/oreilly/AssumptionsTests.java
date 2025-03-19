@@ -25,7 +25,7 @@ public class AssumptionsTests {
     }
 
     @Test @DisplayName("pop() on empty stack skipped by precondition failure")
-    void callPopOnEmptyStack_protected() {
+    void callPopOnEmptyStack_protectedByPreconditionCheck() {
         int size = stack.size();
 
         // Pre-condition violation: Only continue if stack is not empty

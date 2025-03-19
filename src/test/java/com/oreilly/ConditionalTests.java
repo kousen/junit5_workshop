@@ -3,8 +3,14 @@ package com.oreilly;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.*;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// from: https://junit.org/junit5/docs/current/user-guide/#writing-tests-conditional-execution
 public class ConditionalTests {
     @Test
     @EnabledOnOs(OS.MAC)
@@ -18,6 +24,43 @@ public class ConditionalTests {
         // ...
     }
 
+    @TestOnMac
+    void testOnMac() {
+        assertTrue(true);
+    }
+
+    // Demo of custom annotation; better to put in its own file
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @Test
+    @EnabledOnOs(OS.MAC)
+    @interface TestOnMac {
+    }
+
+    @Test
+    @EnabledOnOs(architectures = "aarch64")
+    void onAarch64() {
+        // ...
+    }
+
+    @Test
+    @DisabledOnOs(architectures = "x86_64")
+    void notOnX86_64() {
+        // ...
+    }
+
+    @Test
+    @EnabledOnOs(value = OS.MAC, architectures = "aarch64")
+    void onNewMacs() {
+        // ...
+    }
+
+    @Test
+    @DisabledOnOs(value = OS.MAC, architectures = "aarch64")
+    void notOnNewMacs() {
+        // ...
+    }
+
     @Test
     @EnabledOnJre(JRE.JAVA_8)
     void onlyOnJava8() {
@@ -25,14 +68,14 @@ public class ConditionalTests {
     }
 
     @Test
-    @EnabledOnJre({JRE.JAVA_8, JRE.JAVA_11, JRE.JAVA_17})
-    void okayOnJava8and11and17() {
+    @EnabledOnJre({JRE.JAVA_8, JRE.JAVA_11, JRE.JAVA_17, JRE.JAVA_21})
+    void okayOnJava8and11and17and21() {
         assertTrue(true);
     }
 
     @Test
-    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_17)
-    void okayForJREFrom8to17() {
+    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_21)
+    void okayForJREFrom8to21() {
     }
 
     @Test
