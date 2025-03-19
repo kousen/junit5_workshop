@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.*;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -57,7 +56,7 @@ public class ParameterizedTests {
     }
 
     private static List<Arguments> maxWithArgsList() {
-        return Arrays.asList(
+        return List.of(
                 Arguments.of(1, 2, "2"),  // parses 2 out of the string
                 Arguments.of(7, 3, 7),
                 Arguments.of(2, 4, 6, 8),   // last arg is ignored

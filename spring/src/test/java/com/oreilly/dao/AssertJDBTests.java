@@ -25,16 +25,11 @@ public class AssertJDBTests {
     @Test
     void checkLastNameColumnValues() {
         assertThat(table).column("last_name")
-                .value()
-                .isEqualTo("Kirk")
-                .value()
-                .isEqualTo("Picard")
-                .value()
-                .isEqualTo("Sisko")
-                .value()
-                .isEqualTo("Janeway")
-                .value()
-                .isEqualTo("Archer");
+                .value().isEqualTo("Kirk")
+                .value().isEqualTo("Picard")
+                .value().isEqualTo("Sisko")
+                .value().isEqualTo("Janeway")
+                .value().isEqualTo("Archer");
     }
 
     @Test
@@ -46,23 +41,15 @@ public class AssertJDBTests {
     @Test
     void checkFirstTwoRows() {
         assertThat(table).row(0)
-                .value()
-                .isEqualTo(1)
-                .value()
-                .isEqualTo("CAPTAIN")
-                .value()
-                .isEqualTo("James")
-                .value()
-                .isEqualTo("Kirk");
+                .value().isEqualTo(1)
+                .value().isEqualTo("CAPTAIN")
+                .value().isEqualTo("James")
+                .value().isEqualTo("Kirk");
         assertThat(table).row(1)
-                .value()
-                .isEqualTo(2)
-                .value()
-                .isEqualTo("CAPTAIN")
-                .value()
-                .isEqualTo("Jean-Luc")
-                .value()
-                .isEqualTo("Picard");
+                .value().isEqualTo(2)
+                .value().isEqualTo("CAPTAIN")
+                .value().isEqualTo("Jean-Luc")
+                .value().isEqualTo("Picard");
     }
 
     @Test

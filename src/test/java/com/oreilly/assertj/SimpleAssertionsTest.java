@@ -31,10 +31,6 @@ public class SimpleAssertionsTest {
         assertThat(jeanLuc)
                 .extracting(Person::first, Person::last, Person::dob)
                 .containsExactly("Jean-Luc", "Picard", LocalDate.of(2305, Month.JULY, 13));
-
-        assertThat(jeanLuc)
-                .extracting("first", "last", "dob")
-                .containsExactly("Jean-Luc", "Picard", LocalDate.of(2305, Month.JULY, 13));
     }
 
 }

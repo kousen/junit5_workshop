@@ -1,17 +1,15 @@
 package com.oreilly.assertj;
 
 import com.oreilly.Book;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
@@ -44,8 +42,7 @@ public class CollectionAssertionsTest {
         assertThat(starTrekCharacters)
                 .allSatisfy(name -> assertThat(name).isNotEmpty())
                 .anySatisfy(name -> assertThat(name).contains("a"))
-                .filteredOn(name -> name.contains("a"))
-                .hasSize(3)
+                .filteredOn(name -> name.contains("a")).hasSize(3)
                 .containsExactly("Picard", "Data", "La Forge");
     }
 
@@ -80,8 +77,8 @@ public class CollectionAssertionsTest {
         assertThat(books)
                 .extracting(Book::title, Book::author)
                 .contains(
-                    org.assertj.core.api.Assertions.tuple("Effective Java", "Joshua Bloch"),
-                    org.assertj.core.api.Assertions.tuple("Modern Java Recipes", "Ken Kousen")
+                    Assertions.tuple("Effective Java", "Joshua Bloch"),
+                    Assertions.tuple("Modern Java Recipes", "Ken Kousen")
                 );
 
         // Comparing by author and title
