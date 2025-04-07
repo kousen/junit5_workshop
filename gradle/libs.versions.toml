@@ -6,7 +6,7 @@ gson = "2.12.1"
 jqwik = "1.9.2"
 junit = "5.12.1"
 junit-platform = "1.12.1"
-mockito = "5.16.1"
+mockito = "5.17.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
