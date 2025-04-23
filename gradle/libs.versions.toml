@@ -11,7 +11,7 @@ mockito = "5.17.0"
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 assertj-db = { module = "org.assertj:assertj-db", version.ref = "assertj-db" }
-commons-collections = "org.apache.commons:commons-collections4:4.5.0-M3"
+commons-collections = "org.apache.commons:commons-collections4:4.5.0"
 commons-validator = { module = "commons-validator:commons-validator", version.ref = "commons-validator" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 jqwik = { module = "net.jqwik:jqwik", version.ref = "jqwik" }
