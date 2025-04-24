@@ -2,7 +2,7 @@
 assertj = "4.0.0-M1"
 assertj-db = "3.0.0"
 commons-validator = "1.9.0"
-gson = "2.13.0"
+gson = "2.13.1"
 jqwik = "1.9.2"
 junit = "5.12.1"
 junit-platform = "1.12.2"
