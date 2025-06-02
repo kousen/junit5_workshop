@@ -5,7 +5,7 @@ commons-validator = "1.9.0"
 gson = "2.13.1"
 jqwik = "1.9.2"
 junit = "5.13.0"
-junit-platform = "1.12.2"
+junit-platform = "1.13.0"
 mockito = "5.18.0"
 
 [libraries]
