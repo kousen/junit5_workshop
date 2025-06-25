@@ -4,8 +4,8 @@ assertj-db = "3.0.0"
 commons-validator = "1.9.0"
 gson = "2.13.1"
 jqwik = "1.9.2"
-junit = "5.13.1"
 junit-platform = "1.13.2"
+junit = "5.13.2"
 mockito = "5.18.0"
 
 [libraries]
