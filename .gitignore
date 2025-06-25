@@ -1,11 +1,20 @@
+# Gradle
 .gradle
 /build/
+*/build/
 bin/
 out/
 !gradle/wrapper/gradle-wrapper.jar
 local.properties
 
-### STS ###
+# IDE Files
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Eclipse/STS ###
 .apt_generated
 .classpath
 .factorypath
@@ -13,18 +22,42 @@ local.properties
 .settings
 .springBeans
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
 ### NetBeans ###
 nbproject/private/
-build/
 nbbuild/
 dist/
 nbdist/
 .nb-gradle/
 
+### VS Code ###
+.vscode/
+
+# OS Files
 .DS_Store
+Thumbs.db
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+*.log
+
+# Spring Boot
+spring.log
+application-local.properties
+application-local.yml
+
+# Test Reports
+**/test-results/
+**/reports/
+coverage/
+
+# Temporary Files
+*.tmp
+*.temp
+*~
+
+# Claude Code
+.claude/

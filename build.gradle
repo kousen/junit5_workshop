@@ -13,8 +13,12 @@ repositories {
 }
 
 dependencies {
+    // JUnit BOM for consistent versions
+    testImplementation platform("org.junit:junit-bom:5.13.2")
+    
     implementation libs.gson
-    testImplementation libs.bundles.junit
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation libs.bundles.mockito
     testImplementation libs.assertj
     testImplementation libs.jqwik
