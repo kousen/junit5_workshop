@@ -13,6 +13,7 @@ local.properties
 *.iws
 *.iml
 *.ipr
+.jpb/
 
 ### Eclipse/STS ###
 .apt_generated
