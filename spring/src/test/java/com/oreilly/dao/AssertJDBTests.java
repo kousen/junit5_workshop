@@ -5,7 +5,10 @@ import org.assertj.db.type.AssertDbConnectionFactory;
 import org.assertj.db.type.Table;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.sql.DataSource;
 
 import static org.assertj.db.api.Assertions.assertThat;
 
@@ -13,10 +16,12 @@ import static org.assertj.db.api.Assertions.assertThat;
 public class AssertJDBTests {
     private Table table;
 
+    @Autowired
+    private DataSource dataSource;
+
     @BeforeEach
     void setUp() {
-        AssertDbConnection connection = AssertDbConnectionFactory.of(
-                        "jdbc:h2:mem:testdb", "sa", "sa")
+        AssertDbConnection connection = AssertDbConnectionFactory.of(dataSource)
                 .create();
         table = connection.table("officers")
                 .build();
